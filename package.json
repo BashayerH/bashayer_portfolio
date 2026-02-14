@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-meriem",
+  "version": "1.0.0",
+  "description": "Personal portfolio website with bilingual support (EN/AR)",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "serve": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "bilingual",
+    "i18n",
+    "rtl"
+  ],
+  "author": "Meriem Benfekhadou",
+  "license": "MIT"
+}

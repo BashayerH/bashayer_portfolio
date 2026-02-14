@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "headline": "Hi, I'm",
+    "highlight": "Meriem",
+    "subtitle": "Full stack developer",
+    "description": "Crafting modern, responsive, and user-friendly websites with passion and precision.",
+    "downloadResume": "Download Resume"
+  },
+  "about": {
+    "title": "About Me",
+    "name": "Meriem Benfekhadou",
+    "description": [
+      "Software Engineering Master's student.",
+      "Freelance web and mobile developer.",
+      "Creates tailored solutions for startups and businesses."
+    ],
+    "services": {
+      "web": "Web Application Development",
+      "mobile": "Mobile Application Development",
+      "problemSolving": "Problem Solving"
+    }
+  },
+  "projects": {
+    "title": "My Projects",
+    "filterAll": "All",
+    "filterWeb": "Web Application",
+    "filterMobile": "Mobile Application",
+    "placeholderWeb": "Web App",
+    "placeholderMobile": "Mobile App",
+    "items": [
+      {
+        "title": "E-Commerce Platform",
+        "description": "Full-featured online store with React and Node.js",
+        "repository": "Repository",
+        "demo": "Demo"
+      },
+      {
+        "title": "Task Management App",
+        "description": "Cross-platform productivity app built with Flutter",
+        "repository": "Repository",
+        "demo": "Demo"
+      },
+      {
+        "title": "Portfolio CMS",
+        "description": "Dynamic portfolio builder with Laravel backend",
+        "repository": "Repository",
+        "demo": "Demo"
+      },
+      {
+        "title": "Fitness Tracker",
+        "description": "Health and workout tracking app with Flutter",
+        "repository": "Repository",
+        "demo": "Demo"
+      }
+    ]
+  },
+  "skills": {
+    "title": "My Skills"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your@email.com",
+    "messagePlaceholder": "Your message...",
+    "send": "Send Message",
+    "sent": "Message Sent!"
+  },
+  "footer": {
+    "copyright": "© 2025 Meriem Benfekhadou. All rights reserved."
+  }
+}

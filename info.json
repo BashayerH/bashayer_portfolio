@@ -1,0 +1,161 @@
+{
+    "project": {
+      "type": "Personal Portfolio Website",
+      "targetAudience": ["Recruiters", "Tech Companies", "Clients"],
+      "tone": "Professional, Modern, Elegant",
+      "themeStyle": "Dark Neon Gradient"
+    },
+  
+    "branding": {
+      "logoText": "Meriem</>",
+      "fontPrimary": "Poppins",
+      "fontSecondary": "Inter",
+      "direction": "LTR"
+    },
+  
+    "colorPalette": {
+      "primary": "#9B4DFF",
+      "secondary": "#FF5EA8",
+      "accent": "#00E5FF",
+      "backgroundMain": "#0B0014",
+      "backgroundGradient": {
+        "type": "radial + linear",
+        "colors": ["#2A004F", "#0B0014", "#3B005F"]
+      },
+      "textPrimary": "#FFFFFF",
+      "textSecondary": "#B9A7C8",
+      "cardBackground": "rgba(255,255,255,0.05)",
+      "borderGlow": "rgba(155,77,255,0.6)"
+    },
+  
+    "layout": {
+      "maxWidth": "1200px",
+      "gridSystem": "CSS Grid + Flexbox",
+      "spacing": {
+        "sectionPadding": "100px 0",
+        "containerPadding": "24px"
+      }
+    },
+  
+    "pages": [
+      {
+        "id": "home",
+        "title": "Hero Section",
+        "layout": "Two columns",
+        "leftContent": {
+          "headline": "Hi, I’m Meriem",
+          "highlightedText": "Full stack developer",
+          "description": "Crafting modern, responsive, and user-friendly websites with passion and precision.",
+          "ctaButtons": [
+            {
+              "label": "Download Resume",
+              "style": "Gradient Button",
+              "action": "download_pdf"
+            }
+          ],
+          "socialIcons": ["GitHub", "LinkedIn", "Email"]
+        },
+        "rightContent": {
+          "profileImage": {
+            "shape": "Circle",
+            "borderGlow": true
+          },
+          "floatingTechIcons": ["React", "Node.js", "HTML5"]
+        }
+      },
+  
+      {
+        "id": "about",
+        "title": "About Me",
+        "layout": "Image left, content right",
+        "content": {
+          "name": "Meriem Benfekhadou",
+          "description": [
+            "Software Engineering Master’s student.",
+            "Freelance web and mobile developer.",
+            "Creates tailored solutions for startups and businesses."
+          ],
+          "serviceCards": [
+            "Web Application Development",
+            "Mobile Application Development",
+            "Problem Solving"
+          ]
+        }
+      },
+  
+      {
+        "id": "projects",
+        "title": "My Projects",
+        "layout": "Cards Grid",
+        "filterTabs": ["Web Application", "Mobile Application"],
+        "projectCard": {
+          "imagePreview": true,
+          "description": true,
+          "buttons": ["Repository", "Demo"],
+          "hoverEffect": "Glow + lift"
+        }
+      },
+  
+      {
+        "id": "skills",
+        "title": "My Skills",
+        "layout": "Two columns",
+        "displayType": "Progress dots",
+        "skills": [
+          { "name": "HTML", "level": 9 },
+          { "name": "CSS", "level": 8 },
+          { "name": "JavaScript", "level": 9 },
+          { "name": "React", "level": 8 },
+          { "name": "Node.js", "level": 7 },
+          { "name": "Flutter", "level": 8 },
+          { "name": "Laravel", "level": 7 },
+          { "name": "Django", "level": 6 }
+        ]
+      },
+  
+      {
+        "id": "contact",
+        "title": "Contact",
+        "layout": "Centered form",
+        "fields": ["Name", "Email", "Message"],
+        "cta": "Send Message"
+      }
+    ],
+  
+    "uiComponents": {
+      "buttons": {
+        "style": "Rounded",
+        "effect": "Glow on hover",
+        "gradient": true
+      },
+      "cards": {
+        "blurBackground": true,
+        "borderRadius": "20px",
+        "hoverAnimation": "TranslateY(-6px)"
+      }
+    },
+  
+    "animations": {
+      "pageLoad": "Fade + slide up",
+      "scrollReveal": true,
+      "hoverEffects": ["Glow", "Scale"],
+      "iconFloat": true
+    },
+  
+    "responsiveRules": {
+      "mobile": {
+        "layout": "Single column",
+        "hideDecorativeIcons": true
+      },
+      "tablet": {
+        "layout": "Two columns reduced"
+      }
+    },
+  
+    "accessibility": {
+      "contrast": "High",
+      "fontSizeBase": "16px",
+      "keyboardNavigation": true
+    }
+  }
+  

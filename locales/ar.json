@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "about": "عني",
+    "projects": "المشاريع",
+    "skills": "المهارات",
+    "contact": "تواصل"
+  },
+  "hero": {
+    "headline": "مرحباً، أنا",
+    "highlight": "مريم",
+    "subtitle": "مطورة full stack",
+    "description": "أصمم مواقع ويب حديثة ومتجاوبة وسهلة الاستخدام بشغف ودقة.",
+    "downloadResume": "تحميل السيرة الذاتية"
+  },
+  "about": {
+    "title": "عني",
+    "name": "مريم بنفقادو",
+    "description": [
+      "طالبة ماجستير في هندسة البرمجيات.",
+      "مطورة ويب وتطبيقات جوال مستقلة.",
+      "أقدم حلولاً مخصصة للشركات الناشئة والأعمال."
+    ],
+    "services": {
+      "web": "تطوير تطبيقات الويب",
+      "mobile": "تطوير تطبيقات الجوال",
+      "problemSolving": "حل المشكلات"
+    }
+  },
+  "projects": {
+    "title": "مشاريعي",
+    "filterAll": "الكل",
+    "filterWeb": "تطبيق ويب",
+    "filterMobile": "تطبيق جوال",
+    "placeholderWeb": "تطبيق ويب",
+    "placeholderMobile": "تطبيق جوال",
+    "items": [
+      {
+        "title": "منصة تجارة إلكترونية",
+        "description": "متجر إلكتروني متكامل بـ React و Node.js",
+        "repository": "المستودع",
+        "demo": "عرض تجريبي"
+      },
+      {
+        "title": "تطبيق إدارة المهام",
+        "description": "تطبيق إنتاجية متعدد المنصات مبني بـ Flutter",
+        "repository": "المستودع",
+        "demo": "عرض تجريبي"
+      },
+      {
+        "title": "نظام إدارة المعرض",
+        "description": "منشئ معرض ديناميكي بخلفية Laravel",
+        "repository": "المستودع",
+        "demo": "عرض تجريبي"
+      },
+      {
+        "title": "تطبيق تتبع اللياقة",
+        "description": "تطبيق تتبع الصحة والتمارين بـ Flutter",
+        "repository": "المستودع",
+        "demo": "عرض تجريبي"
+      }
+    ]
+  },
+  "skills": {
+    "title": "مهاراتي"
+  },
+  "contact": {
+    "title": "تواصل",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "message": "الرسالة",
+    "namePlaceholder": "اسمك",
+    "emailPlaceholder": "بريدك@الإلكتروني.com",
+    "messagePlaceholder": "رسالتك...",
+    "send": "إرسال الرسالة",
+    "sent": "تم الإرسال!"
+  },
+  "footer": {
+    "copyright": "© 2025 مريم بنفقادو. جميع الحقوق محفوظة."
+  }
+}
