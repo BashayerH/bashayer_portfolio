@@ -5,19 +5,19 @@
     "projects": "Projects",
     "skills": "Skills",
     "contact": "Contact"
-  },
+  }, 
   "hero": {
     "headline": "Hi, I'm",
-    "highlight": "Meriem",
-    "subtitle": "Full stack developer",
-    "description": "Crafting modern, responsive, and user-friendly websites with passion and precision.",
+    "highlight": "Bashayer",
+    "subtitle": "mobile developer",
+    "description": "Crafting modern, responsive, and user-friendly apps with passion and precision.",
     "downloadResume": "Download Resume"
   },
   "about": {
     "title": "About Me",
-    "name": "Meriem Benfekhadou",
+    "name": "Bashayer Alhawsawi",
     "description": [
-      "Software Engineering Master's student.",
+      "Information Technology bachelor's student.",
       "Freelance web and mobile developer.",
       "Creates tailored solutions for startups and businesses."
     ],
