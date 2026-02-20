@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   initNavbar();
   initScrollReveal();
   initProjectFilter();
-  initProjectImageSliders();
+  // Initialize sliders after a short delay to ensure images are in DOM
+  setTimeout(() => {
+    initProjectImageSliders();
+  }, 100);
   initContactForm();
   initSmoothScroll();
 });
@@ -188,7 +191,39 @@ function initProjectImageSliders() {
     const nextBtn = card.querySelector('.project-next');
     const dotsContainer = card.querySelector('.project-dots');
 
-    if (!track || images.length <= 1) return;
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+    
+    // Count only images that have valid src (not broken)
+    const validImages = Array.from(images).filter(img => {
+      const imgEl = img.querySelector('img');
+      return imgEl && imgEl.src;
+    });
+    
+    if (validImages.length <= 1) {
+      // Hide navigation if only one or no images
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
+      dotsContainer.style.display = 'none';
+      return;
+    }
+
+    // Ensure track width is set correctly for all images
+    track.style.width = `${images.length * 100}%`;
+
+    // Add error handling for images to help debug deployment issues
+    images.forEach((imgContainer, index) => {
+      const img = imgContainer.querySelector('img');
+      if (img) {
+        img.addEventListener('error', function() {
+          console.error(`❌ Failed to load image ${index + 1}:`, img.src);
+          // Optionally hide broken image containers
+          // imgContainer.style.display = 'none';
+        });
+        img.addEventListener('load', function() {
+          console.log(`✅ Loaded image ${index + 1}:`, img.src);
+        });
+      }
+    });
 
     let currentIndex = 0;
 
