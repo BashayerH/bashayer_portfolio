@@ -605,35 +605,40 @@ body::before {
 .project-image-slider {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16/10;
+  min-height: 200px;
   background: rgba(0, 0, 0, 0.25);
 }
 
 .project-images-track {
   display: flex;
-  transition: transform 0.4s ease-in-out;
   height: 100%;
-  width: 100%;
+  min-height: 200px;
   will-change: transform;
+  align-items: center;
+  transform: translateX(0);
+}
+
+/* Transition only when slider is ready (avoids "show then go" on load) */
+.project-images-track.slider-ready {
+  transition: transform 0.4s ease-in-out;
 }
 
 .project-image {
-  min-width: 100%;
-  width: 100%;
-  height: 100%;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .project-image img {
   max-width: 100%;
-  max-height: 100%;
   width: auto;
   height: auto;
+  max-height: 320px;
   object-fit: contain;
   display: block;
 }
@@ -840,7 +845,6 @@ a.project-tag-demo:hover {
 }
 
 .project-image {
-  aspect-ratio: 16/10;
   overflow: hidden;
 }
 
@@ -1141,6 +1145,15 @@ a.project-tag-demo:hover {
   transform: translateY(0);
 }
 
+/* Project cards: only fade in (no transform) so slider track transform is not overwritten */
+.project-card.reveal {
+  transform: none;
+}
+
+.project-card.reveal.active {
+  transform: none;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 968px) {
   :root {
@@ -1377,7 +1390,11 @@ a.project-tag-demo:hover {
   }
 
   .project-image-slider {
-    aspect-ratio: 4/3;
+    min-height: 180px;
+  }
+
+  .project-image img {
+    max-height: 280px;
   }
 }
 

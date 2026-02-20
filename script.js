@@ -141,6 +141,16 @@ function initScrollReveal() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
+        // Re-apply slider position when project card becomes visible (fixes "show then gone")
+        if (entry.target.classList.contains('project-card')) {
+          const track = entry.target.querySelector('.project-images-track');
+          if (track && track._sliderGoToImage) {
+            const idx = track._sliderCurrentIndex ?? 0;
+            requestAnimationFrame(() => {
+              track._sliderGoToImage(idx);
+            });
+          }
+        }
       }
     });
   }, observerOptions);
@@ -207,21 +217,26 @@ function initProjectImageSliders() {
       return;
     }
 
-    // Ensure track width is set correctly for all images
-    track.style.width = `${images.length * 100}%`;
+    // Track width = n * 100% of slider; each slide = (100/n)% of track so one slide fills viewport
+    const n = images.length;
+    track.style.width = `${n * 100}%`;
+    images.forEach((imgContainer) => {
+      imgContainer.style.flex = `0 0 ${100 / n}%`;
+    });
 
-    // Add error handling for images to help debug deployment issues
+    // Add error handling and re-apply position when images load (fixes layout shift "show then go")
+    function reapplyPosition() {
+      requestAnimationFrame(() => {
+        if (track._sliderGoToImage) track._sliderGoToImage(currentIndex);
+      });
+    }
     images.forEach((imgContainer, index) => {
       const img = imgContainer.querySelector('img');
       if (img) {
         img.addEventListener('error', function() {
           console.error(`❌ Failed to load image ${index + 1}:`, img.src);
-          // Optionally hide broken image containers
-          // imgContainer.style.display = 'none';
         });
-        img.addEventListener('load', function() {
-          console.log(`✅ Loaded image ${index + 1}:`, img.src);
-        });
+        img.addEventListener('load', reapplyPosition);
       }
     });
 
@@ -248,13 +263,25 @@ function initProjectImageSliders() {
       });
     }
 
-    // Go to specific image
+    // Go to specific image (each slide is 100/n % of track, so move by that per slide)
     function goToImage(index) {
       currentIndex = Math.max(0, Math.min(index, images.length - 1));
-      const offset = -currentIndex * 100;
+      track._sliderCurrentIndex = currentIndex;
+      const percentPerSlide = 100 / n;
+      const offset = -currentIndex * percentPerSlide;
       track.style.transform = `translateX(${offset}%)`;
       updateDots();
     }
+
+    // Set initial position so first image shows immediately (no transition yet)
+    goToImage(0);
+    track._sliderGoToImage = goToImage;
+    requestAnimationFrame(() => {
+      track.classList.add('slider-ready');
+    });
+
+    // Re-apply position on resize so slide stays correct
+    window.addEventListener('resize', reapplyPosition);
 
     // Event listeners
     prevBtn.addEventListener('click', (e) => {
