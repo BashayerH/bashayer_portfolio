@@ -86,15 +86,15 @@
         <h2 class="section-title" data-i18n="about.title">About Me</h2>
         <h3 class="about-name" data-i18n="about.name">Bashayer Alhawsawi</h3>
         <ul class="about-description">
-          <li data-i18n="about.description.0">Software Engineering Master's student.</li>
+          <li data-i18n="about.description.0">Information Technology bachelor's student.</li>
           <li data-i18n="about.description.1">Freelance web and mobile developer.</li>
-          <li data-i18n="about.description.2">Creates tailored solutions for startups and businesses.</li>
+          <li data-i18n="about.description.2">Delivers stable and scalable applications.</li>
         </ul>
         <div class="service-cards">
-          <div class="service-card">
+          <!-- <div class="service-card">
             <span class="service-icon">🌐</span>
             <h4 data-i18n="about.services.web">Web Application Development</h4>
-          </div>
+          </div> -->
           <div class="service-card">
             <span class="service-icon">📱</span>
             <h4 data-i18n="about.services.mobile">Mobile Application Development</h4>
@@ -114,53 +114,37 @@
       <h2 class="section-title reveal" data-i18n="skills.title">My Skills</h2>
       <div class="skills-grid reveal">
         <div class="skill-item">
-          <span class="skill-name">HTML</span>
+          <span class="skill-name">kotlin</span>
           <div class="skill-dots">
-            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
           </div>
         </div>
         <div class="skill-item">
-          <span class="skill-name">CSS</span>
+          <span class="skill-name">flutter</span>
           <div class="skill-dots">
-            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
           </div>
         </div>
         <div class="skill-item">
           <span class="skill-name">JavaScript</span>
           <div class="skill-dots">
-            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span>
           </div>
         </div>
         <div class="skill-item">
-          <span class="skill-name">React</span>
+          <span class="skill-name">java</span>
           <div class="skill-dots">
-            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot "></span><span class="dot"></span>
           </div>
         </div>
         <div class="skill-item">
-          <span class="skill-name">Node.js</span>
+          <span class="skill-name">Html/ CSS</span>
           <div class="skill-dots">
-            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot "></span><span class="dot "></span><span class="dot"></span>
           </div>
         </div>
-        <div class="skill-item">
-          <span class="skill-name">Flutter</span>
-          <div class="skill-dots">
-            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
-          </div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Laravel</span>
-          <div class="skill-dots">
-            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          </div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Django</span>
-          <div class="skill-dots">
-            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          </div>
-        </div>
+       
+  
       </div>
     </div>
   </section>
@@ -176,12 +160,25 @@
       </div>
       <div class="projects-grid">
         <article class="project-card reveal" data-category="web" data-project-index="0">
-          <div class="project-image">
-            <div class="project-placeholder" data-i18n="projects.placeholderWeb">Web App</div>
+          <div class="project-image-slider">
+            <div class="project-images-track">
+              <div class="project-image">
+                <div class="project-placeholder" data-i18n="projects.placeholderWeb">Web App</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Screenshot 1</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Screenshot 2</div>
+              </div>
+            </div>
+            <button class="project-prev" aria-label="Previous image">‹</button>
+            <button class="project-next" aria-label="Next image">›</button>
+            <div class="project-dots"></div>
           </div>
           <div class="project-info">
-            <h3 data-i18n="projects.items.0.title">E-Commerce Platform</h3>
-            <p data-i18n="projects.items.0.description">Full-featured online store with React and Node.js</p>
+            <h3 data-i18n="projects.items.0.title">Maan Web</h3>
+            <p data-i18n="projects.items.0.description">Ma’an Initiative is a web platform serving the healthcare education sectors</p>
             <div class="project-buttons">
               <a href="#" class="btn btn-outline" data-i18n="projects.items.0.repository">Repository</a>
               <a href="#" class="btn btn-gradient" data-i18n="projects.items.0.demo">Demo</a>
@@ -189,11 +186,24 @@
           </div>
         </article>
         <article class="project-card reveal" data-category="mobile" data-project-index="1">
-          <div class="project-image">
-            <div class="project-placeholder" data-i18n="projects.placeholderMobile">Mobile App</div>
+          <div class="project-image-slider">
+            <div class="project-images-track">
+              <div class="project-image">
+                <div class="project-placeholder" data-i18n="projects.placeholderMobile">Mobile App</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Screen 1</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Screen 2</div>
+              </div>
+            </div>
+            <button class="project-prev" aria-label="Previous image">‹</button>
+            <button class="project-next" aria-label="Next image">›</button>
+            <div class="project-dots"></div>
           </div>
           <div class="project-info">
-            <h3 data-i18n="projects.items.1.title">Task Management App</h3>
+            <h3 data-i18n="projects.items.1.title">Minute app driver</h3>
             <p data-i18n="projects.items.1.description">Cross-platform productivity app built with Flutter</p>
             <div class="project-buttons">
               <a href="#" class="btn btn-outline" data-i18n="projects.items.1.repository">Repository</a>
@@ -201,9 +211,22 @@
             </div>
           </div>
         </article>
-        <article class="project-card reveal" data-category="web" data-project-index="2">
-          <div class="project-image">
-            <div class="project-placeholder" data-i18n="projects.placeholderWeb">Web App</div>
+        <!-- <article class="project-card reveal" data-category="web" data-project-index="2">
+          <div class="project-image-slider">
+            <div class="project-images-track">
+              <div class="project-image">
+                <div class="project-placeholder" data-i18n="projects.placeholderWeb">Web App</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Dashboard</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Admin Panel</div>
+              </div>
+            </div>
+            <button class="project-prev" aria-label="Previous image">‹</button>
+            <button class="project-next" aria-label="Next image">›</button>
+            <div class="project-dots"></div>
           </div>
           <div class="project-info">
             <h3 data-i18n="projects.items.2.title">Portfolio CMS</h3>
@@ -213,14 +236,53 @@
               <a href="#" class="btn btn-gradient" data-i18n="projects.items.2.demo">Demo</a>
             </div>
           </div>
-        </article>
+        </article> -->
         <article class="project-card reveal" data-category="mobile" data-project-index="3">
-          <div class="project-image">
-            <div class="project-placeholder" data-i18n="projects.placeholderMobile">Mobile App</div>
+          <div class="project-image-slider">
+            <div class="project-images-track">
+              <div class="project-image">
+                <div class="project-placeholder" data-i18n="projects.placeholderMobile">Mobile App</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Activity</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Stats</div>
+              </div>
+            </div>
+            <button class="project-prev" aria-label="Previous image">‹</button>
+            <button class="project-next" aria-label="Next image">›</button>
+            <div class="project-dots"></div>
           </div>
           <div class="project-info">
-            <h3 data-i18n="projects.items.3.title">Fitness Tracker</h3>
-            <p data-i18n="projects.items.3.description">Health and workout tracking app with Flutter</p>
+            <h3 data-i18n="projects.items.3.title">Minute app clinent</h3>
+            <p data-i18n="projects.items.3.description">A ride-hailing app that allows users to request trips, track drivers, and reach destinations safely and quickly</p>
+            <div class="project-buttons">
+              <a href="#" class="btn btn-outline" data-i18n="projects.items.3.repository">Repository</a>
+              <a href="#" class="btn btn-gradient" data-i18n="projects.items.3.demo">Demo</a>
+            </div>
+          </div>
+        </article>
+         <article class="project-card reveal" data-category="mobile" data-project-index="3">
+          <div class="project-image-slider">
+            <div class="project-images-track">
+              <div class="project-image">
+                <div class="project-placeholder" data-i18n="projects.placeholderMobile">Mobile App</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Activity</div>
+              </div>
+              <div class="project-image">
+                <div class="project-placeholder">Stats</div>
+              </div>
+            </div>
+            <button class="project-prev" aria-label="Previous image">‹</button>
+            <button class="project-next" aria-label="Next image">›</button>
+            <div class="project-dots"></div>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.items.3.title">Minhaj app </h3>
+            <p data-i18n="projects.items.3.description">A ride-hailing app that allows users to request trips, track drivers, and reach destinations safely and quickly</p>
             <div class="project-buttons">
               <a href="#" class="btn btn-outline" data-i18n="projects.items.3.repository">Repository</a>
               <a href="#" class="btn btn-gradient" data-i18n="projects.items.3.demo">Demo</a>

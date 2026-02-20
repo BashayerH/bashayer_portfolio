@@ -19,7 +19,7 @@
     "description": [
       "Information Technology bachelor's student.",
       "Freelance web and mobile developer.",
-      "Creates tailored solutions for startups and businesses."
+      "Delivers stable and scalable applications."
     ],
     "services": {
       "web": "Web Application Development",
@@ -36,14 +36,14 @@
     "placeholderMobile": "Mobile App",
     "items": [
       {
-        "title": "E-Commerce Platform",
-        "description": "Full-featured online store with React and Node.js",
+        "title": "Maan web",
+        "description": "Ma’an Initiative is a web platform serving the healthcare education sector",
         "repository": "Repository",
         "demo": "Demo"
       },
       {
-        "title": "Task Management App",
-        "description": "Cross-platform productivity app built with Flutter",
+        "title": "Minute app driver",
+        "description": "A smart app that enables drivers to receive ride requests, complete trips, and manage earnings with ease.",
         "repository": "Repository",
         "demo": "Demo"
       },
@@ -54,8 +54,8 @@
         "demo": "Demo"
       },
       {
-        "title": "Fitness Tracker",
-        "description": "Health and workout tracking app with Flutter",
+        "title": "Minute app clinent",
+        "description": "A ride-hailing app that allows users to request trips, track drivers, and reach destinations safely and quickly",
         "repository": "Repository",
         "demo": "Demo"
       }

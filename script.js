@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initNavbar();
   initScrollReveal();
   initProjectFilter();
+  initProjectImageSliders();
   initContactForm();
   initSmoothScroll();
 });
@@ -174,6 +175,96 @@ function initProjectFilter() {
       });
     });
   });
+}
+
+// ===== Project Image Sliders =====
+function initProjectImageSliders() {
+  const projectCards = document.querySelectorAll('.project-card');
+
+  projectCards.forEach(card => {
+    const track = card.querySelector('.project-images-track');
+    const images = card.querySelectorAll('.project-image');
+    const prevBtn = card.querySelector('.project-prev');
+    const nextBtn = card.querySelector('.project-next');
+    const dotsContainer = card.querySelector('.project-dots');
+
+    if (!track || images.length <= 1) return;
+
+    let currentIndex = 0;
+
+    // Create dots
+    images.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.classList.add('project-dot');
+      dot.setAttribute('aria-label', `Image ${index + 1}`);
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToImage(index);
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    // Update dots
+    function updateDots() {
+      const dots = dotsContainer.querySelectorAll('.project-dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    // Go to specific image
+    function goToImage(index) {
+      currentIndex = Math.max(0, Math.min(index, images.length - 1));
+      const offset = -currentIndex * 100;
+      track.style.transform = `translateX(${offset}%)`;
+      updateDots();
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentIndex > 0) {
+        goToImage(currentIndex - 1);
+      }
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentIndex < images.length - 1) {
+        goToImage(currentIndex + 1);
+      }
+    });
+
+    // Touch/Swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      if (touchEndX < touchStartX - swipeThreshold && currentIndex < images.length - 1) {
+        goToImage(currentIndex + 1);
+      }
+      if (touchEndX > touchStartX + swipeThreshold && currentIndex > 0) {
+        goToImage(currentIndex - 1);
+      }
+    }
+  });
+}
+
+// Old slider function (removed)
+function initProjectSlider() {
+  // This function is no longer needed
+  console.log('Project image sliders initialized');
 }
 
 // ===== Contact Form =====
