@@ -235,6 +235,11 @@ body::before {
   position: relative;
 }
 
+/* Language toggle at top of hero (mobile only) */
+.hero-lang-toggle {
+  display: none;
+}
+
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -278,6 +283,13 @@ body::before {
 
 .hero-cta {
   margin-bottom: 32px;
+}
+
+.hero-social-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .social-icons {
@@ -607,6 +619,7 @@ body::before {
   overflow: hidden;
   min-height: 200px;
   background: rgba(0, 0, 0, 0.25);
+  direction: ltr; /* Force LTR for slider regardless of page direction */
 }
 
 .project-images-track {
@@ -616,6 +629,7 @@ body::before {
   will-change: transform;
   align-items: center;
   transform: translateX(0);
+  direction: ltr; /* Force LTR for slider regardless of page direction */
 }
 
 /* Transition only when slider is ready (avoids "show then go" on load) */
@@ -839,6 +853,22 @@ a.project-tag-play:hover {
 }
 
 a.project-tag-demo:hover {
+  background: rgba(0, 229, 255, 0.25);
+  border-color: rgba(0, 229, 255, 0.6);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+}
+
+.project-tag-web {
+  color: var(--accent);
+  background: rgba(0, 229, 255, 0.15);
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+.project-tag-web svg {
+  color: var(--accent);
+}
+
+a.project-tag-web:hover {
   background: rgba(0, 229, 255, 0.25);
   border-color: rgba(0, 229, 255, 0.6);
   box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
@@ -1219,6 +1249,47 @@ a.project-tag-demo:hover {
     display: none;
   }
 
+  .nav-links .lang-toggle {
+    display: none;
+  }
+
+  .hero-social-row {
+    justify-content: center;
+  }
+
+  .hero-lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-lang-toggle .lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+
+  .hero-lang-toggle .lang-btn:hover,
+  .hero-lang-toggle .lang-btn.active {
+    color: var(--primary);
+  }
+
+  .hero-lang-toggle .lang-btn.active {
+    background: rgba(155, 77, 255, 0.2);
+  }
+
+  .hero-lang-toggle .lang-sep {
+    color: var(--text-secondary);
+    opacity: 0.6;
+  }
+
   .nav-toggle {
     display: flex;
   }
@@ -1417,6 +1488,7 @@ a.project-tag-demo:hover {
   justify-content: flex-end;
 }
 
+[dir="rtl"] .hero-social-row,
 [dir="rtl"] .social-icons {
   justify-content: flex-end;
 }
