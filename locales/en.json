@@ -48,7 +48,7 @@
         "demo": "Demo"
       },
       {
-        "title": "Portfolio CMS",
+        "title": "Minhaj App",
         "description": "Dynamic portfolio builder with Laravel backend",
         "repository": "Repository",
         "demo": "Demo"
@@ -66,6 +66,8 @@
   },
   "contact": {
     "title": "Contact",
+    "reachMe": "How to reach me",
+    "socialMedia": "Social media",
     "name": "Name",
     "email": "Email",
     "message": "Message",
