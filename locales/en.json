@@ -52,17 +52,19 @@
         "demo": "Demo"
       },
       {
-        "title": "Minhaj App",
-        "description": "Dynamic portfolio builder with Laravel backend",
-        "repository": "Repository",
-        "demo": "Demo"
-      },
-      {
         "title": "Minute app clinent",
         "description": "A ride-hailing app that allows users to request trips, track drivers, and reach destinations safely and quickly",
         "repository": "Repository",
         "demo": "Demo"
+      },
+      {
+        "title": "Minhaj app",
+        "description": "Minhaj is an integrated digital platform for religious and educational services, developed as part of the National Skills Development Program.",
+        "repository": "Repository",
+        "demo": "Demo"
       }
+
+
     ]
   },
   "skills": {
