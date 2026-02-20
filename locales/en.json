@@ -19,16 +19,20 @@
     "description": [
       "Information Technology bachelor's student.",
       "Freelance web and mobile developer.",
-      "Delivers stable and scalable applications."
+      "Delivers stable and scalable applications.",
+      "graduate of Tuwaiq Academy’s Android Bootcamp."
+      
     ],
     "services": {
       "web": "Web Application Development",
       "mobile": "Mobile Application Development",
-      "problemSolving": "Problem Solving"
+      "problemSolving": "Problem Solving",
+      "learning": "4+ years of experience"
     }
   },
   "projects": {
     "title": "My Projects",
+    "featuresUsed": "Features used",
     "filterAll": "All",
     "filterWeb": "Web Application",
     "filterMobile": "Mobile Application",
