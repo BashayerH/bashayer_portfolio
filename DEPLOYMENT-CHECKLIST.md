@@ -13,10 +13,10 @@ Make sure ALL these files are in your `img/` folder before uploading:
 - `me-logo.png` (renamed from `me logo.PNG`)
 
 **Maan Web Project:**
-- `maan01.png`
+- `maan_1.png`
 - `maan02.png`
 - `maan03.png`
-- `maan05.png`
+- `maan_5.png`
 - `maan06.png`
 - `maan07.png`
 
@@ -35,7 +35,7 @@ Make sure ALL these files are in your `img/` folder before uploading:
 - `clinet06.jpg`
 
 **Minhaj App:**
-- `minhaj_logo.png`
+- `minhag_logo.png`
 - `minhaj01.jpg`
 - `minhaj02.jpg`
 - `minhaj03.jpg`
