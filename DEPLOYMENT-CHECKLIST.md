@@ -28,11 +28,11 @@ Make sure ALL these files are in your `img/` folder before uploading:
 
 **Minute App Client:**
 - `clinet_logo.png`
-- `clinet01.jpg`
-- `clinet02.jpg`
-- `clinet03.jpg`
-- `clinet04.jpg`
-- `clinet06.jpg`
+- `clinet01.png`
+- `clinet02.png`
+- `clinet03.png`
+- `clinet04.png`
+- `clinet06.png`
 
 **Minhaj App:**
 - `minhag_logo.png`

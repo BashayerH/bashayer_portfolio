@@ -8,6 +8,7 @@ portfolio/
 ├── index.html          ✅ Main page
 ├── styles.css          ✅ Styles
 ├── script.js           ✅ JavaScript
+├── img/                ✅ Images (project slides, about photo, etc.)
 ├── locales/
 │   ├── en.json        ✅ English translations
 │   └── ar.json        ✅ Arabic translations
