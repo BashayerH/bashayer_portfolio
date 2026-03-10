@@ -20,7 +20,7 @@
     "headline": "Hi, I'm",
     "highlight": "Bashayer",
     "subtitle": "I build mobile apps that people actually use.",
-    "description": "Kotlin & Flutter developer. I turn complex problems into smooth, scalable experiences — from real-time ride-hailing to healthcare platforms. If it runs on a phone and needs to perform, I build it.",
+    "description": "Hi, I'm Bashayer Alhawsawi, a mobile developer based in Saudi Arabia.",
     "downloadResume": "Download Resume",
     "openToOpportunities": "Open to opportunities",
     "scrollHint": "Scroll to discover",
@@ -32,8 +32,8 @@
     ]
   },
   "about": {
-    "title": "The Story Behind the Code",
-    "name": "Bashayer Alhawsawi",
+    "title": "How I Became a Mobile Developer",
+    "name": "It started with a question: how does this actually work?",
     "intro": "It started with a question: how does this actually work?",
     "description": [
       "My journey into development began at the Tuwaiq Academy bootcamp, where I built my first complete application and truly understood the fundamentals of programming. That experience sparked a deep curiosity about how digital products are built.",

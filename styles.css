@@ -1771,9 +1771,14 @@ a.project-tag-web:hover {
   justify-content: flex-end;
 }
 
-[dir="rtl"] .hero-social-row,
+[dir="rtl"] .hero-social-row {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
 [dir="rtl"] .social-icons {
-  justify-content: flex-end;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
 }
 
 [dir="rtl"] .about-description li {

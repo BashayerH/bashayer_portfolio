@@ -487,7 +487,7 @@ function initTypewriter() {
   // Pull phrases from loaded translations; fall back to English defaults
   const phrases = [
     t('I build apps people love to open.') || "I build apps people love to open.",
-    t('Kotlin · Flutter · Scalable systems') || "Kotlin · Flutter · Real-time systems.",
+    t('Kotlin · Flutter · Scalable systems.') || "Kotlin · Flutter · Real-time systems.",
     t('Engineering apps that feel effortless') || "From idea to shipped — I handle both.",
     t('Because good software should feel invisible') || "I don't stop at 'it works.'"
   ];
