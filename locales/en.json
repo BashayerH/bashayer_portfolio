@@ -2,88 +2,154 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "projects": "Projects",
+    "challenge": "Challenge",
     "skills": "Skills",
+    "projects": "Projects",
     "contact": "Contact"
-  }, 
+  },
+  "story": {
+    "chapterHook": "01 · The Hook",
+    "chapterOrigin": "02 · The Beginning",
+    "chapterChallenge": "03 · The Challenge",
+    "chapterCraft": "04 · The Craft",
+    "chapterProof": "05 · The Proof",
+    "chapterVision": "06 · The Vision",
+    "chapterContact": "07 · Let's Talk"
+  },
   "hero": {
     "headline": "Hi, I'm",
     "highlight": "Bashayer",
-    "subtitle": "mobile developer",
-    "description": "Crafting modern, responsive, and user-friendly apps with passion and precision.",
-    "downloadResume": "Download Resume"
+    "subtitle": "I build mobile apps that people actually use.",
+    "description": "Kotlin & Flutter developer. I turn complex problems into smooth, scalable experiences — from real-time ride-hailing to healthcare platforms. If it runs on a phone and needs to perform, I build it.",
+    "downloadResume": "Download Resume",
+    "openToOpportunities": "Open to opportunities",
+    "scrollHint": "Scroll to discover",
+    "typewriter": [
+      "I build apps people love to open.",
+      "Kotlin · Flutter · Scalable systems'.",
+      "Engineering apps that feel effortless",
+      "Because good software should feel invisible'"
+    ]
   },
   "about": {
-    "title": "About Me",
+    "title": "The Story Behind the Code",
     "name": "Bashayer Alhawsawi",
+    "intro": "It started with a question: how does this actually work?",
     "description": [
-      "Information Technology bachelor's student.",
-      "Freelance web and mobile developer.",
-      "Delivers stable and scalable applications.",
-      "graduate of Tuwaiq Academy’s Android Bootcamp."
+      "My journey into development began at the Tuwaiq Academy bootcamp, where I built my first complete application and truly understood the fundamentals of programming. That experience sparked a deep curiosity about how digital products are built.",
       
+      "After graduating, I started working on small projects that strengthened my skills and gave me real experience solving practical problems through code.",
+      
+      "My first professional role introduced me to Flutter, where I spent a year and a half building cross-platform mobile applications and exploring a new side of mobile development.",
+      
+      "Later, I returned to my foundation: Kotlin. Since then, I’ve been continuously refining my expertise in Android development, improving my architecture skills, and building applications that are reliable, scalable, and designed to last."
     ],
     "services": {
-      "web": "Web Application Development",
-      "mobile": "Mobile Application Development",
-      "problemSolving": "Problem Solving",
-      "learning": "4+ years of experience"
+      "mobile": "Mobile Development — Native Android with Kotlin. Cross-platform with Flutter. Built to perform.",
+      "learning": "4+ Years Experience — From bootcamp to production. From solo projects to team collaboration.",
+      "problemSolving": "Problem Solving — I find the friction. Then I remove it."
+    }
+  },
+  "challenge": {
+    "title": "The Problems I Love to Solve",
+    "intro": "I'm drawn to the kind of work that keeps you up at 2am — in a good way.",
+    "itemTitles": [
+      "Real-Time or Nothing",
+      "Architecture Built to Last",
+      "Effortless in Complexity",
+      "Performance Under Pressure"
+    ],
+    "items": [
+      "Systems where a 500ms delay costs someone a ride, a sale, or a decision. Zero tolerance for lag.",
+      "Code that survives the next developer and the next thousand users. Scalability built in, not bolted on.",
+      "When the problem is hard but the solution feels natural — that's where I want to work.",
+      "Apps that stay fast when the real world hits them. No shortcuts, no excuses."
+    ]
+  },
+  "skills": {
+    "title": "Tools I Trust",
+    "intro": "Every tool below has been stress-tested in real projects, debugged at 2am, and refined through iteration. These aren't skills I list — they're tools I trust.",
+    "impact": "The result: apps that scale, interfaces users don't have to think about, and code your future self will thank you for.",
+    "context": {
+      "kotlin": {
+        "label": "Kotlin",
+        "value": "Coroutines, Flow, Jetpack Compose, MVVM, Room, Retrofit — native Android from architecture to animation."
+      },
+      "flutter": {
+        "label": "Flutter",
+        "value": "Cross-platform UI at speed. Bloc/Provider state management. Custom animations and native feel on both platforms."
+      },
+      "arch": {
+        "label": "Architecture",
+        "value": "Clean Architecture — Domain, Data, and Presentation layers. Testable, maintainable, built to survive the next developer."
+      },
+      "maps": {
+        "label": "Maps SDK",
+        "value": "Live tracking, geofencing, route calculation, custom overlays — real-time location at production scale."
+      }
     }
   },
   "projects": {
-    "title": "My Projects",
-    "featuresUsed": "Features used",
+    "title": "What I've Built",
+    "intro": "Four projects. Different domains. One constant: obsessing over the details that most people skip.",
+    "featuresUsed": "Tech stack",
     "filterAll": "All",
-    "filterWeb": "Web Application",
-    "filterMobile": "Mobile Application",
+    "filterWeb": "Web",
+    "filterMobile": "Mobile",
     "placeholderWeb": "Web App",
     "placeholderMobile": "Mobile App",
     "items": [
       {
-        "title": "Maan web",
-        "description": "Ma’an Initiative is a web platform serving the healthcare education sector",
+        "title": "Ma'an Initiative",
+        "description": "Healthcare education lacked a unified digital home. Built a structured web platform now serving medical educators and learners — clean, fast, and built to grow.",
+        "result": "★ Live platform · Healthcare education sector",
         "repository": "Repository",
         "demo": "Demo"
       },
       {
-        "title": "Minute app driver",
-        "description": "A smart app that enables drivers to receive ride requests, complete trips, and manage earnings with ease.",
+        "title": "Minute Driver App",
+        "description": "Drivers needed real-time reliability. Built a production-grade app with Google Maps, live ride handling, and earnings tracking — performance-first, always.",
+        "result": "★ Live on Google Play · Real-time ride-hailing",
         "repository": "Repository",
         "demo": "Demo"
       },
       {
-        "title": "Minute app clinent",
-        "description": "A ride-hailing app that allows users to request trips, track drivers, and reach destinations safely and quickly",
+        "title": "Minute Client App",
+        "description": "Passengers needed the polish of a world-class ride app. Delivered live tracking, intuitive booking flows, push notifications — and a UX people trust.",
+        "result": "★ Live on Google Play · Production-ready passenger app",
         "repository": "Repository",
         "demo": "Demo"
       },
       {
-        "title": "Minhaj app",
-        "description": "Minhaj is an integrated digital platform for religious and educational services, developed as part of the National Skills Development Program.",
+        "title": "Minhaj App",
+        "description": "Diverse Islamic educational content needed an integrated digital platform. Built under the National Skills Development Program — serving thousands, built to last.",
+        "result": "★ Live on Google Play · National Skills Development Program",
         "repository": "Repository",
         "demo": "Demo"
       }
-
-
     ]
   },
-  "skills": {
-    "title": "My Skills"
+  "vision": {
+    "title": "What I'm Building Toward",
+    "text": "I'm not just looking for the next project. I'm looking to work on things that matter — apps that solve real friction, platforms that scale beyond the first thousand users, products I'd be proud to say I built. I'm deepening my expertise in real-time systems, exploring the intersection of mobile and AI, and looking to collaborate with teams who build with intention."
   },
   "contact": {
-    "title": "Contact",
+    "title": "Let's Build Something",
     "reachMe": "How to reach me",
-    "socialMedia": "Social media",
+    "socialMedia": "Connect",
+    "intro": "Whether you have a project in mind, a team looking for a mobile developer, or just want to explore possibilities — I'd love to hear from you. I take on selective work, which means what we build gets my full attention.",
+    "cta": "If you're building something ambitious, let's talk.",
     "name": "Name",
     "email": "Email",
     "message": "Message",
     "namePlaceholder": "Your name",
     "emailPlaceholder": "your@email.com",
-    "messagePlaceholder": "Your message...",
+    "messagePlaceholder": "Tell me about your project or idea...",
     "send": "Send Message",
-    "sent": "Message Sent!"
+    "sent": "Message Sent!",
+    "replyNote": "Typically replies within 24 hours. No automated responses — you'll get me."
   },
   "footer": {
-    "copyright": "© 2025 Bashayer Alhawsawi. All rights reserved."
+    "copyright": "© 2025 Bashayer Alhawsawi. Built with intention."
   }
 }

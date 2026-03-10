@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   }, 100);
   initContactForm();
   initSmoothScroll();
+  initStoryProgress();
+  initCursor();
+  initHeroStars();
+  initTypewriter();
+  initParallaxBgText();
 });
 
 // ===== i18n - Internationalization =====
@@ -87,6 +92,20 @@ function t(key) {
   return getNestedValue(translations, key) || key;
 }
 
+// ===== Story progress bar (scroll indicator) =====
+function initStoryProgress() {
+  const bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function updateProgress() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    bar.style.width = percent + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+}
+
 // ===== Navigation =====
 function initNavbar() {
   const navToggle = document.querySelector('.nav-toggle');
@@ -108,40 +127,40 @@ function initNavbar() {
     });
   }
 
-  // Navbar background on scroll
+  // Navbar: add .scrolled class for cinematic fade-in
+  const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-      navbar.style.background = 'rgba(11, 0, 20, 0.95)';
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
     } else {
-      navbar.style.background = 'rgba(11, 0, 20, 0.8)';
+      navbar.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 }
 
 // ===== Scroll Reveal Animation =====
 function initScrollReveal() {
-  const revealElements = document.querySelectorAll('.reveal');
+  const revealElements = document.querySelectorAll('.reveal, .reveal-left');
   const revealOnLoad = document.querySelectorAll('#home .reveal');
 
-  // Page load: fade + slide up for hero
+  // Page load: staggered entrance for hero elements
   revealOnLoad.forEach((el, i) => {
     setTimeout(() => {
       el.classList.add('active');
-    }, 150 + i * 100);
+    }, 200 + i * 120);
   });
 
   // Scroll reveal for other sections
   const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
-        // Re-apply slider position when project card becomes visible (fixes "show then gone")
+        // Re-apply slider position when project card becomes visible
         if (entry.target.classList.contains('project-card')) {
           const track = entry.target.querySelector('.project-images-track');
           if (track && track._sliderGoToImage) {
@@ -387,3 +406,128 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// ═══════════════════════════════════════════════════
+// CINEMATIC ADDITIONS — from cinematic-ux-redesign.html
+// ═══════════════════════════════════════════════════
+
+// ── Custom Cursor ──
+function initCursor() {
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  if (!cursor || !ring) return;
+
+  // Only on hover-capable pointer devices
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    cursor.style.display = 'none';
+    ring.style.display = 'none';
+    return;
+  }
+
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = (mouseX - 4) + 'px';
+    cursor.style.top = (mouseY - 4) + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX - 18) * 0.15;
+    ringY += (mouseY - ringY - 18) * 0.15;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .scene-card, .project-card, .service-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.width = '56px';
+      ring.style.height = '56px';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+    });
+  });
+}
+
+// ── Hero Stars ──
+function initHeroStars() {
+  const container = document.getElementById('hero-stars');
+  if (!container) return;
+
+  // Respect reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  for (let i = 0; i < 65; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    star.style.cssText = `
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      width: ${size}px;
+      height: ${size}px;
+      opacity: ${Math.random() * 0.55 + 0.08};
+      animation: breathe ${(Math.random() * 4 + 2).toFixed(1)}s ease-in-out infinite;
+      animation-delay: ${(Math.random() * 4).toFixed(1)}s;
+    `;
+    container.appendChild(star);
+  }
+}
+
+// ── Hero Typewriter ──
+function initTypewriter() {
+  const el = document.getElementById('typewriter-text');
+  if (!el) return;
+
+  // Pull phrases from loaded translations; fall back to English defaults
+  const phrases = [
+    t('I build apps people love to open.') || "I build apps people love to open.",
+    t('Kotlin · Flutter · Scalable systems') || "Kotlin · Flutter · Real-time systems.",
+    t('Engineering apps that feel effortless') || "From idea to shipped — I handle both.",
+    t('Because good software should feel invisible') || "I don't stop at 'it works.'"
+  ];
+
+  let phraseIdx = 0, charIdx = 0, deleting = false;
+
+  function tick() {
+    const current = phrases[phraseIdx];
+    if (!deleting) {
+      el.textContent = current.slice(0, ++charIdx);
+      if (charIdx === current.length) {
+        deleting = true;
+        setTimeout(tick, 1800);
+        return;
+      }
+      setTimeout(tick, 55);
+    } else {
+      el.textContent = current.slice(0, --charIdx);
+      if (charIdx === 0) {
+        deleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+        setTimeout(tick, 400);
+        return;
+      }
+      setTimeout(tick, 30);
+    }
+  }
+
+  // Start after a short delay so the page feels settled
+  setTimeout(tick, 900);
+}
+
+// ── Parallax BG Text ──
+function initParallaxBgText() {
+  const bgText = document.querySelector('.bg-text');
+  if (!bgText) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    bgText.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.14}px))`;
+  }, { passive: true });
+}

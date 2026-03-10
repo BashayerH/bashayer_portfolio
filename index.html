@@ -6,10 +6,15 @@
   <title>Bashayer | Mobile Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Custom cursor (desktop only) -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <div id="progress-bar" class="story-progress" aria-hidden="true"></div>
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container nav-container">
@@ -22,8 +27,9 @@
       <ul class="nav-links">
         <li><a href="#home" data-i18n="nav.home">Home</a></li>
         <li><a href="#about" data-i18n="nav.about">About</a></li>
-        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#challenge" data-i18n="nav.challenge">Challenge</a></li>
         <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         <li class="lang-toggle">
           <button type="button" class="lang-btn" data-lang="en" aria-label="English">EN</button>
@@ -34,28 +40,31 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
+  <!-- Hero Section · 01 The Hook -->
+  <section id="home" class="hero story-chapter">
     <div class="hero-bg"></div>
+    <div class="stars-layer" id="hero-stars" aria-hidden="true"></div>
+    <div class="bg-text" aria-hidden="true">BASHAYER</div>
+    <!-- <div class="chapter-tag reveal" data-i18n="story.chapterHook">01 · The Hook</div> -->
     <div class="container hero-container">
       <div class="hero-left reveal">
-        <h1 class="hero-headline"><span data-i18n="hero.headline">Hi, I'm</span> <span class="highlight" data-i18n="hero.highlight">Bashayer</span></h1>
-        <p class="hero-subtitle" data-i18n="hero.subtitle">Mobile developer</p>
-        <p class="hero-description" data-i18n="hero.description">Crafting modern, responsive, and user-friendly websites with passion and precision.</p>
+        <!-- <h1 class="hero-headline"><span data-i18n="hero.headline">Hi, I'm</span> <span class="highlight" data-i18n="hero.highlight">Bashayer</span></h1> -->
+        <p class="hero-subtitle" aria-live="polite"><span id="typewriter-text"></span><span class="typewriter-cursor" aria-hidden="true"></span></p>
+        <!-- <p class="hero-description" data-i18n="hero.description">Kotlin &amp; Flutter developer. I turn complex problems into smooth, scalable experiences — from real-time ride-hailing to healthcare platforms.</p> -->
         <div class="hero-cta">
           
-          <a href="https://drive.google.com/file/d/1bX2EiI2NykwOGI_cSWGCgp7tPb2cGmyU/view?usp=share_link" target="_blank" rel="noopener" class="btn btn-gradient" data-action="download_pdf" data-i18n="hero.downloadResume">Download Resume</a>
+          <a href="https://drive.google.com/file/d/1gg0Rt5LxmEf7U9xEI4q6CeZ51y2kBglP/view?usp=share_link" target="_blank" rel="noopener" class="btn btn-gradient" data-action="download_pdf" data-i18n="hero.downloadResume">Download Resume</a>
         </div>
         <div class="hero-social-row">
         <div class="social-icons">
-          <!-- <a href="https://github.com/BashayerH" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </a> -->
-          <a href="https://wa.me/966544830939" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <a href="https://x.com/fo0oshaty?s=21&t=Y80YvnlvNBgXPjalWzmiLg" target="_blank" rel="noopener" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
-          <a href="mailto:bashayer.eh.19@gmail.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a href="https://www.linkedin.com/in/bashayereh" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://github.com/BashayerH" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           </a>
         </div>
         <div class="hero-lang-toggle" aria-label="Language">
@@ -120,23 +129,36 @@
         </div>
       </div>
     </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="scroll-hint-line"></span>
+      <span data-i18n="hero.scrollHint">Scroll to discover</span>
+    </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
+  <div class="chapter-divider"></div>
+
+  <!-- About Section · 02 The Origin -->
+  <section id="about" class="about story-chapter">
+    <div class="label-bar">
+      <span class="label-num">02</span>
+      <span class="label-title" data-i18n="story.chapterOrigin">The Origin</span>
+      <span class="label-line"></span>
+    </div>
     <div class="container about-container">
       <div class="about-image reveal">
         <img src="img/me_logo.PNG" alt="Bashayer Alhawsawi" class="about-image-photo" loading="lazy">
       </div>
       <div class="about-content reveal">
-        <h2 class="section-title" data-i18n="about.title">About Me</h2>
+        <h2 class="section-title" data-i18n="about.title">The Story Behind the Code</h2>
+        <p class="about-intro" data-i18n="about.intro">It started with a bootcamp that changed everything.</p>
         <h3 class="about-name" data-i18n="about.name">Bashayer Alhawsawi</h3>
-        <ul class="about-description">
-          <li data-i18n="about.description.0">Information Technology bachelor's student.</li>
-          <li data-i18n="about.description.1">Freelance web and mobile developer.</li>
-          <li data-i18n="about.description.2">Delivers stable and scalable applications.</li>
-          <li data-i18n="about.description.3">graduate of Tuwaiq Academy’s Android Bootcamp.</li>
-        </ul>
+        <div class="about-paragraphs">
+          <p class="about-p reveal d1" data-i18n="about.description.0">My journey into development began at the Tuwaiq Academy bootcamp, where I built my first complete application and truly understood the fundamentals of programming. That experience sparked a deep curiosity about how digital products are built.</p>
+          <p class="about-p reveal d2" data-i18n="about.description.1"> After graduating, I started working on small projects that strengthened my skills and gave me real experience solving practical problems through code،
+            My first professional role introduced me to Flutter, where I spent a year and a half building cross-platform mobile applications and exploring a new side of mobile development.
+          </p>
+          <p class="about-p reveal d3" data-i18n="about.description.2">Later, I returned to my foundation: Kotlin. Since then, I’ve been continuously refining my expertise in Android development, improving my architecture skills, and building applications that are reliable, scalable, and designed to last.</p>
+        </div>
         <div class="service-cards">
           <!-- <div class="service-card">
             <span class="service-icon">🌐</span>
@@ -160,10 +182,51 @@
     </div>
   </section>
 
-   <!-- Skills Section -->
-  <section id="skills" class="skills">
+  <div class="chapter-divider"></div>
+
+  <!-- Challenge Section · 03 The Challenge -->
+  <section id="challenge" class="challenge story-chapter">
+    <div class="label-bar">
+      <span class="label-num">03</span>
+      <span class="label-title" data-i18n="story.chapterChallenge">The Challenge</span>
+      <span class="label-line"></span>
+    </div>
+    <div class="container">
+      <h2 class="section-title reveal" data-i18n="challenge.title">The Problems I Love to Solve</h2>
+      <p class="challenge-intro reveal" data-i18n="challenge.intro">I'm drawn to the kind of work that keeps you up at 2am — in a good way.</p>
+      <div class="scene-grid scene-grid-2 reveal">
+        <div class="scene-card" data-num="01">
+          <h3 data-i18n="challenge.itemTitles.0">Real-Time or Nothing</h3>
+          <p data-i18n="challenge.items.0">Systems where a 500ms delay costs someone a ride, a sale, or a decision. Zero tolerance for lag.</p>
+        </div>
+        <div class="scene-card" data-num="02">
+          <h3 data-i18n="challenge.itemTitles.1">Architecture Built to Last</h3>
+          <p data-i18n="challenge.items.1">Code that survives the next developer and the next thousand users. Scalability built in, not bolted on.</p>
+        </div>
+        <div class="scene-card" data-num="03">
+          <h3 data-i18n="challenge.itemTitles.2">Effortless in Complexity</h3>
+          <p data-i18n="challenge.items.2">When the problem is hard but the solution feels natural — that's where I want to work.</p>
+        </div>
+        <div class="scene-card" data-num="04">
+          <h3 data-i18n="challenge.itemTitles.3">Performance Under Pressure</h3>
+          <p data-i18n="challenge.items.3">Apps that stay fast when the real world hits them. No shortcuts, no excuses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="chapter-divider"></div>
+
+  <!-- Skills Section · 04 The Craft -->
+  <section id="skills" class="skills story-chapter">
+    <div class="label-bar">
+      <span class="label-num">04</span>
+      <span class="label-title" data-i18n="story.chapterCraft">The Craft</span>
+      <span class="label-line"></span>
+    </div>
     <div class="container skills-container">
-      <h2 class="section-title reveal" data-i18n="skills.title">My Skills</h2>
+      <h2 class="section-title reveal" data-i18n="skills.title">Tools I Trust</h2>
+      <p class="skills-intro reveal" data-i18n="skills.intro">Every tool below has been stress-tested in real projects, debugged at 2am, and refined through iteration. These aren't skills I list — they're tools I trust.</p>
       <div class="skills-grid reveal">
         <div class="skill-item">
           <span class="skill-icon skill-icon-kotlin" aria-hidden="true">
@@ -228,13 +291,40 @@
           <span class="skill-name">GitHub</span>
         </div>
       </div>
+      <p class="skills-impact reveal" data-i18n="skills.impact">The result: apps that scale, interfaces users don't have to think about, and code your future self will thank you for.</p>
+      <div class="skills-context reveal">
+        <div class="skills-context-row">
+          <div class="skills-context-label" data-i18n="skills.context.kotlin.label">Kotlin</div>
+          <div class="skills-context-value" data-i18n="skills.context.kotlin.value">Coroutines, Flow, Jetpack Compose, MVVM, Room, Retrofit — native Android from architecture to animation.</div>
+        </div>
+        <div class="skills-context-row">
+          <div class="skills-context-label" data-i18n="skills.context.flutter.label">Flutter</div>
+          <div class="skills-context-value" data-i18n="skills.context.flutter.value">Cross-platform UI at speed. Bloc/Provider state management. Custom animations and native feel on both platforms.</div>
+        </div>
+        <div class="skills-context-row">
+          <div class="skills-context-label" data-i18n="skills.context.arch.label">Architecture</div>
+          <div class="skills-context-value" data-i18n="skills.context.arch.value">Clean Architecture — Domain, Data, and Presentation layers. Testable, maintainable, built to survive the next developer.</div>
+        </div>
+        <div class="skills-context-row">
+          <div class="skills-context-label" data-i18n="skills.context.maps.label">Maps SDK</div>
+          <div class="skills-context-value" data-i18n="skills.context.maps.value">Live tracking, geofencing, route calculation, custom overlays — real-time location at production scale.</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
+  <div class="chapter-divider"></div>
+
+  <!-- Projects Section · 05 The Proof -->
+  <section id="projects" class="projects story-chapter">
+    <div class="label-bar">
+      <span class="label-num">05</span>
+      <span class="label-title" data-i18n="story.chapterProof">The Proof</span>
+      <span class="label-line"></span>
+    </div>
     <div class="container">
-      <h2 class="section-title reveal" data-i18n="projects.title">My Projects</h2>
+      <h2 class="section-title reveal" data-i18n="projects.title">What I've Built</h2>
+      <p class="projects-intro reveal" data-i18n="projects.intro">Four projects. Different domains. One constant: obsessing over the details that most people skip.</p>
       <div class="filter-tabs reveal">
         <button class="filter-btn active" data-filter="all" data-i18n="projects.filterAll">All</button>
         <button class="filter-btn" data-filter="web" data-i18n="projects.filterWeb">Web Application</button>
@@ -273,6 +363,8 @@
           <div class="project-info">
             <h3 data-i18n="projects.items.0.title">Maan Web</h3>
             <p data-i18n="projects.items.0.description">Ma’an Initiative is a web platform serving the healthcare education sectors</p>
+            
+            <p class="project-result" data-i18n="projects.items.0.result">★ Live platform · Healthcare education sector</p>
             <div class="project-features">
               <span class="project-features-label" data-i18n="projects.featuresUsed">Features used</span>
               <div class="project-features-tags">
@@ -308,6 +400,8 @@
           <div class="project-info">
             <h3 data-i18n="projects.items.1.title">Minute app driver</h3>
             <p data-i18n="projects.items.1.description">Cross-platform productivity app built with Flutter</p>
+            
+            <p class="project-result" data-i18n="projects.items.1.result">★ Live on Google Play · Real-time ride-hailing</p>
             <div class="project-features">
               <span class="project-features-label" data-i18n="projects.featuresUsed">Features used</span>
               <div class="project-features-tags">
@@ -355,6 +449,8 @@
           <div class="project-info">
             <h3 data-i18n="projects.items.2.title">Minute app client</h3>
             <p data-i18n="projects.items.2.description">A ride-hailing app that allows users to request trips, track drivers, and reach destinations safely and quickly</p>
+            
+            <p class="project-result" data-i18n="projects.items.2.result">★ Live on Google Play · Production-ready passenger app</p>
             <div class="project-features">
               <span class="project-features-label" data-i18n="projects.featuresUsed">Features used</span>
               <div class="project-features-tags">
@@ -396,6 +492,8 @@
           <div class="project-info">
             <h3 data-i18n="projects.items.3.title">Minhaj app </h3>
             <p data-i18n="projects.items.3.description">Minhaj is an integrated digital platform for religious and educational services, developed as part of the National Skills Development Program.</p>
+            
+            <p class="project-result" data-i18n="projects.items.3.result">★ Live on Google Play · National Skills Development Program</p>
             <div class="project-features">
               <span class="project-features-label" data-i18n="projects.featuresUsed">Features used</span>
               <div class="project-features-tags">
@@ -414,12 +512,36 @@
     </div>
   </section>
 
- 
+  <div class="chapter-divider"></div>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
+  <!-- Vision Section · 06 The Vision -->
+  <!-- <section id="vision" class="vision story-chapter">
+    <div class="label-bar">
+      <span class="label-num">06</span>
+      <span class="label-title" data-i18n="story.chapterVision">The Vision</span>
+      <span class="label-line"></span>
+    </div>
     <div class="container">
-      <h2 class="section-title reveal" data-i18n="contact.title">Social media</h2>
+      <h2 class="section-title reveal" data-i18n="vision.title">What I'm Building Toward</h2>
+      <blockquote class="vision-quote pull-quote reveal">
+        <p data-i18n="vision.text">I'm not just looking for the next project. I'm looking to work on things that matter — apps that solve real friction, platforms that scale beyond the first thousand users, products that I'd be proud to say I built.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <div class="chapter-divider"></div> -->
+
+  <!-- Contact Section · 07 The Invitation -->
+  <section id="contact" class="contact story-chapter">
+    <div class="label-bar">
+      <span class="label-num">07</span>
+      <span class="label-title" data-i18n="story.chapterContact">The Invitation</span>
+      <span class="label-line"></span>
+    </div>
+    <div class="container">
+      <h2 class="section-title reveal" data-i18n="contact.title">Let's Build Something</h2>
+      <p class="contact-intro reveal" data-i18n="contact.intro">Whether you have a project in mind, a team looking for a mobile developer, or just want to explore possibilities — I'd love to hear from you. I take on selective work, which means what we build gets my full attention.</p>
+      <p class="contact-cta reveal" data-i18n="contact.cta">If you're building something ambitious, let's talk.</p>
 
       <!-- How to reach me -->
       <!-- <div class="contact-reach reveal">
@@ -442,26 +564,23 @@
 
       <!-- Social media -->
       <div class="contact-social reveal">
-        <h3 class="contact-subtitle" data-i18n="contact.socialMedia"></h3>
+        
         <div class="contact-social-icons">
-          <a href="https://x.com/fo0oshaty?s=21&t=Y80YvnlvNBgXPjalWzmiLg" target="_blank" rel="noopener" class="contact-icon-link" aria-label="Twitter">
-            <span class="contact-icon contact-icon-twitter" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <a href="https://wa.me/966544830939" target="_blank" rel="noopener" class="contact-icon-link" aria-label="WhatsApp">
+            <span class="contact-icon contact-icon-whatsapp" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </span>
-            <span class="contact-icon-label">X</span>
+            <span class="contact-icon-label">WhatsApp</span>
           </a>
-          <a href="https://www.linkedin.com/in/bashayereh" target="_blank" rel="noopener" class="contact-icon-link" aria-label="LinkedIn">
-            <span class="contact-icon contact-icon-linkedin" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <a href="mailto:bashayer.eh.19@gmail.com" class="contact-icon-link" aria-label="Email">
+            <span class="contact-icon contact-icon-email" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             </span>
-            <span class="contact-icon-label">LinkedIn</span>
+            <span class="contact-icon-label" data-i18n="contact.email">Email</span>
           </a>
-          <a href="https://github.com/BashayerH" target="_blank" rel="noopener" class="contact-icon-link" aria-label="GitHub">
-            <span class="contact-icon contact-icon-github" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </span>
-            <span class="contact-icon-label">GitHub</span>
-          </a>
+         
+         
+         
         </div>
       </div>
 
@@ -480,13 +599,14 @@
         </div>
         <button type="submit" class="btn btn-gradient btn-full" data-i18n="contact.send">Send Message</button>
       </form> -->
+      <p class="contact-reply-note reveal" data-i18n="contact.replyNote">Typically replies within 24 hours.</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p data-i18n="footer.copyright">&copy; 2025 Meriem Benfekhadou. All rights reserved.</p>
+      <p data-i18n="footer.copyright">© 2025 Bashayer Alhawsawi. Built with intention.</p>
     </div>
   </footer>
 
