@@ -484,13 +484,15 @@ function initTypewriter() {
   const el = document.getElementById('typewriter-text');
   if (!el) return;
 
-  // Pull phrases from loaded translations; fall back to English defaults
-  const phrases = [
-    t('I build apps people love to open.') || "I build apps people love to open.",
-    t('Kotlin · Flutter · Scalable systems.') || "Kotlin · Flutter · Real-time systems.",
-    t('Engineering apps that feel effortless') || "From idea to shipped — I handle both.",
-    t('Because good software should feel invisible') || "I don't stop at 'it works.'"
+  // Read typewriter array directly from the translations object (avoids t() key fallback)
+  const defaultPhrases = [
+    "I build apps people love to open.",
+    "Kotlin · Flutter · Real-time systems.",
+    "From idea to shipped — I handle both.",
+    "I don't stop at 'it works.'"
   ];
+  const tw = translations && translations.hero && translations.hero.typewriter;
+  const phrases = (Array.isArray(tw) && tw.length > 0) ? tw : defaultPhrases;
 
   let phraseIdx = 0, charIdx = 0, deleting = false;
 
