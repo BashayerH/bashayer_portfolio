@@ -101,7 +101,7 @@
     "items": [
       {
         "title": "Ma'an Initiative",
-        "description": "Healthcare education lacked a unified digital home. Built a structured web platform now serving medical educators and learners — clean, fast, and built to grow.",
+        "description": "Under the Ma'an Initiative, I developed this website to serve the healthcare education sector",
         "result": "★ Live platform · Healthcare education sector",
         "repository": "Repository",
         "demo": "Demo"
@@ -122,8 +122,8 @@
       },
       {
         "title": "Minhaj App",
-        "description": "Diverse Islamic educational content needed an integrated digital platform. Built under the National Skills Development Program — serving thousands, built to last.",
-        "result": "★ Live on Google Play · National Skills Development Program",
+        "description": "Islamic app developed under the Elm company, I helped develop it within the National Skills Development Program program",
+        "result": "★ Live on Google Play · ",
         "repository": "Repository",
         "demo": "Demo"
       }
