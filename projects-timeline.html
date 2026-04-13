@@ -1,0 +1,544 @@
+<!-- =========================================================
+     PROJECTS SECTION — Timeline Story Layout
+     Drop-in replacement for the existing #projects section
+     ========================================================= -->
+
+<style>
+/* ── Timeline Story Layout ──────────────────────────────── */
+.projects.story-chapter {
+  background: #EAE2CE;
+  padding: 100px 0 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle grain texture */
+.projects.story-chapter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.projects.story-chapter .container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Section header */
+.projects .section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #2C2416;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.projects .projects-intro {
+  font-size: 1.05rem;
+  color: #6B5D44;
+  max-width: 520px;
+  margin-bottom: 72px;
+  line-height: 1.65;
+}
+
+/* ── Timeline wrapper ───────────────────────────────────── */
+.tl-wrapper {
+  position: relative;
+}
+
+/* Vertical line */
+.tl-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent 0%, #A8956A 8%, #A8956A 92%, transparent 100%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* ── Each entry ─────────────────────────────────────────── */
+.tl-entry {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 0;
+  align-items: center;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.tl-entry:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline dot */
+.tl-dot {
+  grid-column: 2;
+  grid-row: 1;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #7A6A4A;
+  background: #EAE2CE;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, border-color 0.3s;
+  flex-shrink: 0;
+}
+
+.tl-entry:hover .tl-dot {
+  background: #2D6A4A;
+  border-color: #2D6A4A;
+}
+
+/* ── Images side ─────────────────────────────────────────── */
+.tl-images {
+  padding: 0 32px 0 0;
+}
+
+.tl-entry.tl-right .tl-images {
+  grid-column: 3;
+  grid-row: 1;
+  padding: 0 0 0 32px;
+}
+.tl-entry.tl-left .tl-images {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 0 32px 0 0;
+}
+
+/* Image collage */
+.img-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 8px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.img-collage .img-main {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.img-collage .img-secondary {
+  display: contents;
+}
+
+.img-collage .img-secondary img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Mobile app: portrait grid (2 columns, shorter) */
+.img-collage.portrait .img-main {
+  height: 180px;
+}
+.img-collage.portrait .img-secondary img {
+  height: 100px;
+}
+
+/* ── Text/content side ───────────────────────────────────── */
+.tl-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tl-entry.tl-left .tl-content {
+  grid-column: 3;
+  grid-row: 1;
+  padding: 0 0 0 40px;
+}
+
+.tl-entry.tl-right .tl-content {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 0 40px 0 0;
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* Teal square icon */
+.tl-square {
+  display: block;
+  width: 44px;
+  height: 44px;
+  background: #1F6B4A;
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+
+.tl-entry.tl-right .tl-content .tl-square {
+  align-self: flex-end;
+}
+
+/* Project number */
+.tl-num {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8A7455;
+}
+
+/* Project title */
+.tl-title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 700;
+  color: #2C2416;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.02em;
+  font-style: italic;
+}
+
+/* Subtitle / tagline */
+.tl-subtitle {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #C0622A;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* Description */
+.tl-desc {
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: #5A4D36;
+  margin: 0;
+  max-width: 380px;
+}
+
+.tl-entry.tl-right .tl-content .tl-desc {
+  max-width: 380px;
+  text-align: right;
+  align-self: flex-end;
+}
+
+/* Result line */
+.tl-result {
+  font-size: 0.82rem;
+  color: #8A7455;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Tech tags */
+.tl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.tl-entry.tl-right .tl-content .tl-tags {
+  justify-content: flex-end;
+}
+
+.tl-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(44, 36, 22, 0.08);
+  color: #5A4D36;
+  border: 1px solid rgba(44, 36, 22, 0.12);
+  white-space: nowrap;
+}
+
+.tl-tag-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  background: #1F6B4A;
+  color: #E8F5EE !important;
+  border-color: #1F6B4A;
+  transition: background 0.2s;
+}
+
+.tl-tag-link:hover {
+  background: #154D36;
+}
+
+.tl-tag-demo {
+  background: rgba(192, 98, 42, 0.12);
+  color: #C0622A !important;
+  border-color: rgba(192, 98, 42, 0.25);
+}
+
+/* ── Reveal animation ────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger children of tl-entry */
+.tl-entry.tl-left.reveal.in-view .tl-images  { transition-delay: 0.05s; }
+.tl-entry.tl-left.reveal.in-view .tl-content { transition-delay: 0.2s; }
+.tl-entry.tl-right.reveal.in-view .tl-content { transition-delay: 0.05s; }
+.tl-entry.tl-right.reveal.in-view .tl-images  { transition-delay: 0.2s; }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .tl-line { left: 20px; }
+  .tl-entry {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px 0;
+    margin-bottom: 60px;
+    align-items: start;
+  }
+  .tl-dot {
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 4px;
+  }
+  .tl-entry.tl-left .tl-images,
+  .tl-entry.tl-right .tl-images {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 0;
+  }
+  .tl-entry.tl-left .tl-content,
+  .tl-entry.tl-right .tl-content {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0 0 0 12px;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .tl-entry.tl-right .tl-content .tl-desc,
+  .tl-entry.tl-right .tl-content .tl-tags {
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+</style>
+
+<!-- ═══ SECTION HTML ═══════════════════════════════════════ -->
+<section id="projects" class="projects story-chapter">
+  <div class="label-bar">
+    <span class="label-num">05</span>
+    <span class="label-title" data-i18n="story.chapterProof">The Proof</span>
+    <span class="label-line"></span>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title reveal" data-i18n="projects.title">What I've Built</h2>
+    <p class="projects-intro reveal" data-i18n="projects.intro">
+      Four projects. Different domains. One constant: obsessing over the details that most people skip.
+    </p>
+
+    <div class="tl-wrapper">
+      <div class="tl-line"></div>
+
+      <!-- ── 01 · Maan Web ── Images LEFT · Text RIGHT ── -->
+      <div class="tl-entry tl-left reveal" data-category="web" data-project-index="0">
+        <div class="tl-dot"></div>
+
+        <div class="tl-images">
+          <div class="img-collage">
+            <img src="img/maan_5.png" alt="Ma'an Initiative - overview" class="img-main" loading="lazy">
+            <div class="img-secondary">
+              <img src="img/maan06.png" alt="Ma'an Initiative - screen 2" loading="lazy">
+              <img src="img/maan_1.png" alt="Ma'an Initiative - screen 3" loading="lazy">
+              <img src="img/maan02.png" alt="Ma'an Initiative - screen 4" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-content">
+          <span class="tl-square"></span>
+          <span class="tl-num">01 / Web Application</span>
+          <h3 class="tl-title" data-i18n="projects.items.0.title">Maan Web</h3>
+          <p class="tl-subtitle">Healthcare Education Platform</p>
+          <p class="tl-desc" data-i18n="projects.items.0.description">
+            Ma'an Initiative is a web platform serving the healthcare education sectors — built with attention to accessibility, responsive flow, and seamless UX across all devices.
+          </p>
+          <p class="tl-result" data-i18n="projects.items.0.result">★ Live platform · Healthcare education sector</p>
+          <div class="tl-tags">
+            <span class="tl-tag">HTML5</span>
+            <span class="tl-tag">CSS3</span>
+            <span class="tl-tag">JavaScript</span>
+            <span class="tl-tag">Responsive</span>
+            <a href="https://maan-bfd2f.web.app" target="_blank" rel="noopener"
+               class="tl-tag tl-tag-link" title="Visit Maan website" aria-label="Visit Maan website">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+              Live
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 02 · Minute Driver ── Text LEFT · Images RIGHT ── -->
+      <div class="tl-entry tl-right reveal" data-category="mobile" data-project-index="1">
+        <div class="tl-dot"></div>
+
+        <div class="tl-content">
+          <span class="tl-square"></span>
+          <span class="tl-num">02 / Mobile Application</span>
+          <h3 class="tl-title" data-i18n="projects.items.1.title">Minute Driver</h3>
+          <p class="tl-subtitle">Real-Time Ride-Hailing</p>
+          <p class="tl-desc" data-i18n="projects.items.1.description">
+            Cross-platform driver app built with Flutter — real-time map tracking, trip management, and instant notifications designed for smooth on-road performance.
+          </p>
+          <p class="tl-result" data-i18n="projects.items.1.result">★ Live on Google Play · Real-time ride-hailing</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Flutter</span>
+            <span class="tl-tag">Kotlin</span>
+            <span class="tl-tag">Firebase</span>
+            <span class="tl-tag">Google Maps</span>
+            <a href="https://drive.google.com/file/d/1cHaCTntuuKOEfCkGW130yeb3p_Zv1gYy/view?usp=share_link"
+               target="_blank" rel="noopener" class="tl-tag tl-tag-demo" aria-label="Watch Demo">Demo</a>
+            <a href="https://play.google.com/store/apps/details?id=com.taxi.minutedriver&pcampaignid=web_share"
+               target="_blank" rel="noopener" class="tl-tag tl-tag-link" title="Google Play" aria-label="Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/>
+              </svg>
+              Play
+            </a>
+          </div>
+        </div>
+
+        <div class="tl-images">
+          <div class="img-collage portrait">
+            <img src="img/driver_logo.png" alt="Minute Driver - logo screen" class="img-main" loading="lazy">
+            <div class="img-secondary">
+              <img src="img/driver01.jpg" alt="Minute Driver - screen 2" loading="lazy">
+              <img src="img/driver02.png" alt="Minute Driver - screen 3" loading="lazy">
+              <img src="img/driver03.jpg" alt="Minute Driver - screen 4" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 03 · Minute Client ── Images LEFT · Text RIGHT ── -->
+      <div class="tl-entry tl-left reveal" data-category="mobile" data-project-index="2">
+        <div class="tl-dot"></div>
+
+        <div class="tl-images">
+          <div class="img-collage portrait">
+            <img src="img/clinet_logo.png" alt="Minute Client - logo screen" class="img-main" loading="lazy">
+            <div class="img-secondary">
+              <img src="img/clinet01.png" alt="Minute Client - screen 2" loading="lazy">
+              <img src="img/clinet02.png" alt="Minute Client - screen 3" loading="lazy">
+              <img src="img/clinet03.png" alt="Minute Client - screen 4" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-content">
+          <span class="tl-square"></span>
+          <span class="tl-num">03 / Mobile Application</span>
+          <h3 class="tl-title" data-i18n="projects.items.2.title">Minute Client</h3>
+          <p class="tl-subtitle">Passenger App · Production-Ready</p>
+          <p class="tl-desc" data-i18n="projects.items.2.description">
+            A ride-hailing app that allows users to request trips, track drivers in real time, and reach their destinations safely — polished from booking to arrival.
+          </p>
+          <p class="tl-result" data-i18n="projects.items.2.result">★ Live on Google Play · Production-ready passenger app</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Kotlin</span>
+            <span class="tl-tag">Flutter</span>
+            <span class="tl-tag">Firebase</span>
+            <span class="tl-tag">Google Maps</span>
+            <a href="https://drive.google.com/file/d/1zgE6lEMfZeEql-GFmq3ByigTSRVs9H5-/view?usp=share_link"
+               target="_blank" rel="noopener" class="tl-tag tl-tag-demo" aria-label="Watch Demo">Demo</a>
+            <a href="https://play.google.com/store/apps/details?id=com.taxi.minute&pcampaignid=web_share"
+               target="_blank" rel="noopener" class="tl-tag tl-tag-link" title="Google Play" aria-label="Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/>
+              </svg>
+              Play
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 04 · Minhaj ── Text LEFT · Images RIGHT ── -->
+      <div class="tl-entry tl-right reveal" data-category="mobile" data-project-index="3">
+        <div class="tl-dot"></div>
+
+        <div class="tl-content">
+          <span class="tl-square"></span>
+          <span class="tl-num">04 / Mobile Application</span>
+          <h3 class="tl-title" data-i18n="projects.items.3.title">Minhaj App</h3>
+          <p class="tl-subtitle">National Skills Development Program</p>
+          <p class="tl-desc" data-i18n="projects.items.3.description">
+            An integrated digital platform for religious and educational services — built with Kotlin and Jetpack Compose as part of the National Skills Development Program.
+          </p>
+          <p class="tl-result" data-i18n="projects.items.3.result">★ Live on Google Play · National Skills Development Program</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Kotlin</span>
+            <span class="tl-tag">Android</span>
+            <span class="tl-tag">Firebase</span>
+            <span class="tl-tag">MVVM</span>
+            <span class="tl-tag">Jetpack Compose</span>
+            <a href="https://play.google.com/store/apps/details?id=sa.elm.mwl&hl=ar"
+               target="_blank" rel="noopener" class="tl-tag tl-tag-link" title="Google Play" aria-label="Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/>
+              </svg>
+              Play
+            </a>
+          </div>
+        </div>
+
+        <div class="tl-images">
+          <div class="img-collage portrait">
+            <img src="img/minhag_logo.png" alt="Minhaj App - logo screen" class="img-main" loading="lazy">
+            <div class="img-secondary">
+              <img src="img/minhaj01.jpg" alt="Minhaj App - screen 2" loading="lazy">
+              <img src="img/minhaj02.jpg" alt="Minhaj App - screen 3" loading="lazy">
+              <img src="img/minhaj03.jpg" alt="Minhaj App - screen 4" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tl-wrapper -->
+  </div><!-- /container -->
+</section>
+
+<!-- ── Reveal on scroll (plain IntersectionObserver) ──────── -->
+<script>
+(function () {
+  const els = document.querySelectorAll('#projects .reveal');
+  if (!els.length) return;
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+    }),
+    { threshold: 0.12 }
+  );
+  els.forEach(el => io.observe(el));
+})();
+</script>

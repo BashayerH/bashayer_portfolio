@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en" dir="ltr" data-lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,6 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+<script>
+  fetch('projects-timeline.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('projects-placeholder').outerHTML = html;
+    });
+</script>
 <body>
   <!-- Custom cursor (desktop only) -->
   <div class="cursor" id="cursor" aria-hidden="true"></div>
@@ -185,7 +193,8 @@
   <div class="chapter-divider"></div>
 
   <!-- Challenge Section · 03 The Challenge -->
-  <section id="challenge" class="challenge story-chapter">
+
+  <!-- <section id="challenge" class="challenge story-chapter">
     <div class="label-bar">
       <span class="label-num">03</span>
       <span class="label-title" data-i18n="story.chapterChallenge">The Challenge</span>
@@ -193,7 +202,7 @@
     </div>
     <div class="container">
       <h2 class="section-title reveal" data-i18n="challenge.title">The Problems I Love to Solve</h2>
-      <!-- <p class="challenge-intro reveal" data-i18n="challenge.intro">I'm drawn to the kind of work that keeps you up at 2am — in a good way.</p> -->
+      <p class="challenge-intro reveal" data-i18n="challenge.intro">I'm drawn to the kind of work that keeps you up at 2am — in a good way.</p>
       <div class="scene-grid scene-grid-2 reveal">
         <div class="scene-card" data-num="01">
           <h3 data-i18n="challenge.itemTitles.0">Real-Time or Nothing</h3>
@@ -213,7 +222,9 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> 
+-->
+
 
   <div class="chapter-divider"></div>
 
@@ -316,7 +327,8 @@
   <div class="chapter-divider"></div>
 
   <!-- Projects Section · 05 The Proof -->
-  <section id="projects" class="projects story-chapter">
+  <div id="projects-placeholder"></div>
+  <!-- <section id="projects" class="projects story-chapter">
     <div class="label-bar">
       <span class="label-num">05</span>
       <span class="label-title" data-i18n="story.chapterProof">The Proof</span>
@@ -510,7 +522,7 @@
         </article>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <div class="chapter-divider"></div>
 
