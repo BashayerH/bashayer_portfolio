@@ -90,8 +90,8 @@
     }
   },
   "projects": {
-    "title": "What I've Built",
-    "intro": "Four projects. Different domains. One constant: obsessing over the details that most people skip.",
+    "title": "My Projects",
+    "intro": "Projects that left an impression and pride in me .. and there's more",
     "featuresUsed": "Tech stack",
     "filterAll": "All",
     "filterWeb": "Web",
@@ -134,11 +134,11 @@
     "text": "I'm not just looking for the next project. I'm looking to work on things that matter — apps that solve real friction, platforms that scale beyond the first thousand users, products I'd be proud to say I built. I'm deepening my expertise in real-time systems, exploring the intersection of mobile and AI, and looking to collaborate with teams who build with intention."
   },
   "contact": {
-    "title": "Let's Build Something",
+    "title": "Contact",
     "reachMe": "How to reach me",
     "socialMedia": "Connect",
     "intro": "Whether you have a project in mind, a team looking for a mobile developer, or just want to explore possibilities — I'd love to hear from you. I take on selective work, which means what we build gets my full attention.",
-    "cta": "If you're building something ambitious, let's talk.",
+    "cta": "available for all new challenges",
     "name": "Name",
     "email": "Email",
     "message": "Message",
