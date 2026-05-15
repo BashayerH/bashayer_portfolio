@@ -9,7 +9,8 @@
   background: #0d0b08;
   padding: 100px 0 120px;
   position: relative;
-  overflow: hidden;
+  /* Horizontal only — avoids wide images shifting layout; tall content stays scrollable */
+  overflow-x: hidden;
 }
 
 /* subtle grain texture */
@@ -67,7 +68,7 @@
 /* ── Each entry ─────────────────────────────────────────── */
 .tl-entry {
   display: grid;
-  grid-template-columns: 1fr 60px 1fr;
+  grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr);
   gap: 0;
   align-items: center;
   margin-bottom: 100px;
@@ -102,6 +103,8 @@
 /* ── Images side ─────────────────────────────────────────── */
 .tl-images {
   padding: 0 32px 0 0;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .tl-entry.tl-right .tl-images {
@@ -123,11 +126,14 @@
   gap: 8px;
   border-radius: 16px;
   overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .img-collage .img-main {
   grid-column: 1 / -1;
   width: 100%;
+  max-width: 100%;
   height: 220px;
   object-fit: cover;
   border-radius: 12px;
@@ -140,6 +146,7 @@
 
 .img-collage .img-secondary img {
   width: 100%;
+  max-width: 100%;
   height: 120px;
   object-fit: cover;
   border-radius: 8px;
@@ -294,50 +301,125 @@
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.reveal.in-view {
+#projects .reveal.in-view,
+#projects .reveal.active {
   opacity: 1;
   transform: none;
 }
 
-/* Stagger children of tl-entry */
-.tl-entry.tl-left.reveal.in-view .tl-images  { transition-delay: 0.05s; }
-.tl-entry.tl-left.reveal.in-view .tl-content { transition-delay: 0.2s; }
-.tl-entry.tl-right.reveal.in-view .tl-content { transition-delay: 0.05s; }
-.tl-entry.tl-right.reveal.in-view .tl-images  { transition-delay: 0.2s; }
+/* Stagger children of tl-entry (match .active for post-injection scroll reveal) */
+.tl-entry.tl-left.reveal.in-view .tl-images,
+.tl-entry.tl-left.reveal.active .tl-images {
+  transition-delay: 0.05s;
+}
+.tl-entry.tl-left.reveal.in-view .tl-content,
+.tl-entry.tl-left.reveal.active .tl-content {
+  transition-delay: 0.2s;
+}
+.tl-entry.tl-right.reveal.in-view .tl-content,
+.tl-entry.tl-right.reveal.active .tl-content {
+  transition-delay: 0.05s;
+}
+.tl-entry.tl-right.reveal.in-view .tl-images,
+.tl-entry.tl-right.reveal.active .tl-images {
+  transition-delay: 0.2s;
+}
 
 /* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .tl-line { left: 20px; }
+  .projects.story-chapter {
+    padding: 56px 0 72px;
+  }
+
+  .projects.story-chapter .container {
+    padding-left: clamp(14px, 4vw, 24px);
+    padding-right: clamp(14px, 4vw, 24px);
+  }
+
+  .projects .projects-intro {
+    margin-bottom: 40px;
+  }
+
+  .tl-wrapper {
+    min-width: 0;
+  }
+
+  .tl-line { left: 18px; }
   .tl-entry {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 32px minmax(0, 1fr);
     grid-template-rows: auto auto;
     gap: 16px 0;
-    margin-bottom: 60px;
+    column-gap: 10px;
+    margin-bottom: 48px;
     align-items: start;
+    min-width: 0;
   }
   .tl-dot {
     grid-column: 1;
     grid-row: 1;
     margin-top: 4px;
+    width: 14px;
+    height: 14px;
   }
   .tl-entry.tl-left .tl-images,
   .tl-entry.tl-right .tl-images {
     grid-column: 2;
     grid-row: 2;
     padding: 0;
+    min-width: 0;
   }
   .tl-entry.tl-left .tl-content,
   .tl-entry.tl-right .tl-content {
     grid-column: 2;
     grid-row: 1;
-    padding: 0 0 0 12px;
+    padding: 0 0 0 8px;
     text-align: left;
     align-items: flex-start;
+    min-width: 0;
+    max-width: 100%;
   }
+
+  /* Smaller collage on phones — avoids huge hero shots and keeps section scannable */
+  .img-collage .img-main {
+    height: min(165px, 42vw);
+  }
+  .img-collage .img-secondary img {
+    height: min(78px, 22vw);
+  }
+  .img-collage.portrait .img-main {
+    height: min(150px, 40vw);
+  }
+  .img-collage.portrait .img-secondary img {
+    height: min(72px, 20vw);
+  }
+
+  /* Long copy should wrap inside the viewport */
+  .tl-desc {
+    max-width: none;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
   .tl-entry.tl-right .tl-content .tl-desc,
   .tl-entry.tl-right .tl-content .tl-tags {
     text-align: left;
     justify-content: flex-start;
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 400px) {
+  .tl-line { left: 14px; }
+  .tl-entry {
+    grid-template-columns: 26px minmax(0, 1fr);
+    column-gap: 8px;
+  }
+
+  .img-collage .img-main {
+    height: min(150px, 48vw);
+  }
+  .img-collage.portrait .img-main {
+    height: min(140px, 46vw);
   }
 }
 </style>
@@ -535,9 +617,11 @@
   if (!els.length) return;
   const io = new IntersectionObserver(
     entries => entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in-view', 'active');
+      io.unobserve(e.target);
     }),
-    { threshold: 0.12 }
+    { threshold: 0.05, rootMargin: '0px 0px 140px 0px' }
   );
   els.forEach(el => io.observe(el));
 })();
