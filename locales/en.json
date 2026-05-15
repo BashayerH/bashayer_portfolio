@@ -126,6 +126,15 @@
         "result": "★ Live on Google Play · ",
         "repository": "Repository",
         "demo": "Demo"
+      },
+      {
+        "title": "Meme Editor",
+        "subtitle": "Kotlin Multiplatform · Android · iOS · Web · Desktop",
+        "categoryLabel": "05 / Kotlin Multiplatform",
+        "description": "Meme Editor is a Kotlin Multiplatform app targeting Android, iOS, Web, and Desktop, allowing users to create and customize memes with text editing and sharing features. Built as a hands-on project to explore modern cross-platform development and ship a consistent experience from one codebase.",
+        "result": "★ Exploration project · Kotlin Multiplatform",
+        "repository": "Repository",
+        "demo": "Demo"
       }
     ]
   },
