@@ -533,3 +533,47 @@ function initParallaxBgText() {
     bgText.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.14}px))`;
   }, { passive: true });
 }
+
+/** Injected `#projects` from `projects-timeline.html` after fetch — translations + reveal */
+window.addEventListener('portfolio:projects-loaded', () => {
+  applyTranslations(translations);
+  initProjectsTimelineReveal();
+  queueMicrotask(() => applyTranslations(translations));
+  setTimeout(() => applyTranslations(translations), 0);
+});
+
+function initProjectsTimelineReveal() {
+  const els = [...document.querySelectorAll('#projects .reveal')];
+  if (!els.length) return;
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in-view', 'active');
+        io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.03, rootMargin: '20% 0px 48% 0px' }
+  );
+
+  els.forEach((el) => io.observe(el));
+
+  const markIfInOrNearViewport = () => {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    els.forEach((el) => {
+      if (el.classList.contains('active')) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh + 120 && rect.bottom > -80) {
+        el.classList.add('in-view', 'active');
+        io.unobserve(el);
+      }
+    });
+  };
+
+  requestAnimationFrame(() => {
+    markIfInOrNearViewport();
+    requestAnimationFrame(markIfInOrNearViewport);
+  });
+  setTimeout(markIfInOrNearViewport, 150);
+}

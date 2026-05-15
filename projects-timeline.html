@@ -31,18 +31,18 @@
   padding: 0 40px;
 }
 
-/* Section header */
+/* Section header — light text on dark ink (browns were invisible on mobile) */
 .projects .section-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: #2C2416;
+  color: var(--cream, #f0ead8);
   margin-bottom: 12px;
   letter-spacing: -0.02em;
 }
 
 .projects .projects-intro {
   font-size: 1.05rem;
-  color: #6B5D44;
+  color: var(--pale, #b8b0a4);
   max-width: 520px;
   margin-bottom: 72px;
   line-height: 1.65;
@@ -86,8 +86,8 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 2px solid #7A6A4A;
-  background: #EAE2CE;
+  border: 2px solid rgba(201, 147, 58, 0.45);
+  background: rgba(240, 234, 216, 0.12);
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -202,14 +202,14 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #8A7455;
+  color: var(--mid, #6b6560);
 }
 
 /* Project title */
 .tl-title {
   font-size: clamp(1.5rem, 3vw, 2.1rem);
   font-weight: 700;
-  color: #2C2416;
+  color: var(--cream, #f0ead8);
   line-height: 1.15;
   margin: 0;
   letter-spacing: -0.02em;
@@ -220,7 +220,7 @@
 .tl-subtitle {
   font-size: 0.92rem;
   font-weight: 500;
-  color: #C0622A;
+  color: var(--gold-light, #e8b96a);
   margin: 0;
   letter-spacing: 0.01em;
 }
@@ -229,7 +229,7 @@
 .tl-desc {
   font-size: 0.93rem;
   line-height: 1.7;
-  color: #5A4D36;
+  color: var(--pale, #b8b0a4);
   margin: 0;
   max-width: 380px;
 }
@@ -243,7 +243,7 @@
 /* Result line */
 .tl-result {
   font-size: 0.82rem;
-  color: #8A7455;
+  color: var(--mid, #6b6560);
   margin: 0;
   font-weight: 500;
 }
@@ -267,9 +267,9 @@
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 20px;
-  background: rgba(44, 36, 22, 0.08);
-  color: #5A4D36;
-  border: 1px solid rgba(44, 36, 22, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--pale, #b8b0a4);
+  border: 1px solid rgba(201, 147, 58, 0.2);
   white-space: nowrap;
 }
 
@@ -289,9 +289,9 @@
 }
 
 .tl-tag-demo {
-  background: rgba(192, 98, 42, 0.12);
-  color: #C0622A !important;
-  border-color: rgba(192, 98, 42, 0.25);
+  background: rgba(201, 147, 58, 0.12);
+  color: var(--gold-light, #e8b96a) !important;
+  border-color: rgba(201, 147, 58, 0.35);
 }
 
 /* ── Reveal animation ────────────────────────────────────── */
@@ -420,6 +420,14 @@
   }
   .img-collage.portrait .img-main {
     height: min(140px, 46vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #projects .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition-duration: 0.01ms !important;
   }
 }
 </style>
@@ -609,20 +617,3 @@
     </div><!-- /tl-wrapper -->
   </div><!-- /container -->
 </section>
-
-<!-- ── Reveal on scroll (plain IntersectionObserver) ──────── -->
-<script>
-(function () {
-  const els = document.querySelectorAll('#projects .reveal');
-  if (!els.length) return;
-  const io = new IntersectionObserver(
-    entries => entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('in-view', 'active');
-      io.unobserve(e.target);
-    }),
-    { threshold: 0.05, rootMargin: '0px 0px 140px 0px' }
-  );
-  els.forEach(el => io.observe(el));
-})();
-</script>

@@ -10,13 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<script>
-  fetch('projects-timeline.html')
-    .then(r => r.text())
-    .then(html => {
-      document.getElementById('projects-placeholder').outerHTML = html;
-    });
-</script>
 <body>
   <!-- Custom cursor (desktop only) -->
   <div class="cursor" id="cursor" aria-hidden="true"></div>
@@ -625,5 +618,35 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+(function () {
+  function injectProjects() {
+    var ph = document.getElementById('projects-placeholder');
+    if (!ph) return;
+
+    fetch('projects-timeline.html')
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text();
+      })
+      .then(function (html) {
+        ph = document.getElementById('projects-placeholder');
+        if (!ph) return;
+        ph.outerHTML = html;
+        window.dispatchEvent(new Event('portfolio:projects-loaded'));
+      })
+      .catch(function () {
+        ph = document.getElementById('projects-placeholder');
+        if (!ph) return;
+        ph.outerHTML =
+          '<section id="projects" class="projects story-chapter"><div class="container" style="padding:3rem var(--container-padding,20px);"><p style="color:var(--pale,#b8b0a4);font-size:0.95rem;line-height:1.6;margin:0;">Projects could not be loaded (network or blocked file fetch). Serve the site over HTTP locally, for example run <code style="font-size:0.85em;">npx serve</code> from the project folder, then open the URL it prints.</p></div></section>';
+        window.dispatchEvent(new Event('portfolio:projects-loaded'));
+      });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectProjects);
+  else injectProjects();
+})();
+</script>
 </body>
 </html>
