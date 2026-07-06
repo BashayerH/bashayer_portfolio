@@ -1,0 +1,406 @@
+/* ═══════════════════════════════════════════════════════════════
+   TITANIC THEME LAYER — cinematic 1912 luxury atmosphere
+   Loads AFTER styles.css. Same palette (ink / gold / cream),
+   same content — only atmosphere, framing and micro-interactions.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --titanic-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --deep-water: #050403;
+  --mist: rgba(240, 234, 216, 0.03);
+}
+
+/* ── Reveal: guarantee smooth fade-in transitions everywhere ── */
+.reveal {
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+
+/* ═══════════════════════════════════════════════
+   HERO — ship prow slicing dark, misty water
+   ═══════════════════════════════════════════════ */
+.hero {
+  overflow: hidden;
+}
+
+/* Ocean + prow silhouette (pure decoration, sits behind everything) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(5, 4, 3, 0.92) 0%, rgba(13, 11, 8, 0) 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 600' preserveAspectRatio='xMaxYMax slice'%3E%3Cpath d='M1600 30 L1235 415 Q1188 462 1252 480 L1600 555 Z' fill='%23050403' fill-opacity='0.92'/%3E%3Cpath d='M1600 30 L1235 415' stroke='%23c9933a' stroke-opacity='0.3' stroke-width='2' fill='none'/%3E%3Cpath d='M1600 120 L1320 405' stroke='%23c9933a' stroke-opacity='0.08' stroke-width='1' fill='none'/%3E%3Cpath d='M1160 468 Q1240 500 1330 490 T1600 512' stroke='%23c9933a' stroke-opacity='0.14' stroke-width='1.5' fill='none'/%3E%3Cpath d='M980 505 Q1080 528 1200 518 T1600 540' stroke='%23c9933a' stroke-opacity='0.07' stroke-width='1' fill='none'/%3E%3Cpath d='M0 520 Q150 508 320 516 T680 512 T1040 520' stroke='%23c9933a' stroke-opacity='0.05' stroke-width='1' fill='none'/%3E%3Cellipse cx='1150' cy='486' rx='330' ry='40' fill='%23f0ead8' fill-opacity='0.028'/%3E%3Cellipse cx='860' cy='540' rx='460' ry='52' fill='%23f0ead8' fill-opacity='0.018'/%3E%3C/svg%3E") bottom right / cover no-repeat;
+  opacity: 0.8;
+  will-change: transform;
+}
+
+/* In RTL the prow enters from the other side */
+[dir="rtl"] .hero-bg {
+  transform: scaleX(-1);
+}
+
+/* Slow-drifting mist band above the waterline */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  bottom: 0;
+  height: 38%;
+  background:
+    radial-gradient(ellipse 45% 60% at 30% 80%, var(--mist), transparent 70%),
+    radial-gradient(ellipse 50% 55% at 72% 90%, var(--mist), transparent 70%);
+  filter: blur(6px);
+  animation: mist-drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes mist-drift {
+  from { transform: translateX(-3%); opacity: 0.7; }
+  to   { transform: translateX(3%);  opacity: 1; }
+}
+
+/* Light reflecting through deep water (caustics) */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 38% at 28% 18%, rgba(201, 147, 58, 0.055), transparent 62%),
+    radial-gradient(ellipse 48% 34% at 74% 58%, rgba(232, 185, 106, 0.04), transparent 66%);
+  animation: caustics 16s ease-in-out infinite alternate;
+}
+
+@keyframes caustics {
+  0%   { opacity: 0.55; transform: translate3d(0, 0, 0) scale(1); }
+  50%  { opacity: 1;    transform: translate3d(1.5%, -1%, 0) scale(1.03); }
+  100% { opacity: 0.7;  transform: translate3d(-1%, 1%, 0) scale(1); }
+}
+
+/* Keep hero content above the ocean layers */
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Deep-sea dust particles (populated by titanic.js) */
+.sea-dust {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dust {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 185, 106, 0.8) 0%, rgba(201, 147, 58, 0.25) 60%, transparent 100%);
+  opacity: 0;
+  animation: dust-drift var(--dur, 22s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes dust-drift {
+  0%   { transform: translate3d(0, 14px, 0); opacity: 0; }
+  10%  { opacity: var(--o, 0.45); }
+  85%  { opacity: var(--o, 0.45); }
+  100% { transform: translate3d(var(--dx, 20px), -72vh, 0); opacity: 0; }
+}
+
+/* Hero watermark: engraved nameplate lettering */
+.bg-text {
+  font-family: var(--titanic-serif) !important;
+  letter-spacing: 0.1em !important;
+  font-weight: 700 !important;
+}
+
+/* ═══════════════════════════════════════════════
+   TYPOGRAPHY — 1912 luxury tracking
+   ═══════════════════════════════════════════════ */
+.section-title {
+  letter-spacing: 0.015em !important;
+}
+
+/* Chapter plaques in Cinzel, like brass deck signs */
+.label-title {
+  font-family: var(--titanic-serif) !important;
+  letter-spacing: 0.3em !important;
+  font-weight: 600 !important;
+}
+
+.label-num {
+  font-family: var(--titanic-serif) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   CHAPTER DIVIDERS — gilt ornament
+   ═══════════════════════════════════════════════ */
+.chapter-divider {
+  position: relative;
+  overflow: visible;
+}
+
+.chapter-divider::after {
+  content: '✦';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 9px;
+  line-height: 1;
+  color: rgba(201, 147, 58, 0.5);
+  background: var(--ink);
+  padding: 0 14px;
+}
+
+/* ═══════════════════════════════════════════════
+   ABOUT — captain's log / passenger manifest
+   ═══════════════════════════════════════════════ */
+.about-content {
+  position: relative;
+  padding: 44px 46px;
+  background: rgba(13, 11, 8, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 147, 58, 0.22);
+  border-radius: 4px;
+}
+
+/* Thin gold corner flourishes */
+.about-content::before,
+.about-content::after {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+}
+
+.about-content::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid rgba(201, 147, 58, 0.55);
+  border-left: 2px solid rgba(201, 147, 58, 0.55);
+}
+
+.about-content::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid rgba(201, 147, 58, 0.55);
+  border-right: 2px solid rgba(201, 147, 58, 0.55);
+}
+
+/* Portrait framed like a brass porthole */
+.profile-image {
+  box-shadow:
+    0 0 0 6px rgba(5, 4, 3, 0.9),
+    0 0 0 7px rgba(201, 147, 58, 0.4),
+    0 0 44px rgba(201, 147, 58, 0.2),
+    inset 0 0 60px rgba(201, 147, 58, 0.08) !important;
+}
+
+/* Service cards: riveted brass plates */
+.service-card {
+  background-image:
+    radial-gradient(circle at 11px 11px, rgba(201, 147, 58, 0.45) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at calc(100% - 11px) 11px, rgba(201, 147, 58, 0.45) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 11px calc(100% - 11px), rgba(201, 147, 58, 0.45) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at calc(100% - 11px) calc(100% - 11px), rgba(201, 147, 58, 0.45) 0 1.5px, transparent 2.5px);
+  background-repeat: no-repeat;
+}
+
+/* ═══════════════════════════════════════════════
+   PROJECTS TIMELINE — decks & compass rivets
+   ═══════════════════════════════════════════════ */
+.tl-line {
+  box-shadow: 0 0 14px rgba(201, 147, 58, 0.18);
+}
+
+/* Timeline dots as brass compass rivets */
+.tl-dot {
+  border: 2px solid rgba(201, 147, 58, 0.55) !important;
+  background:
+    radial-gradient(circle, rgba(232, 185, 106, 0.95) 0 2.5px, rgba(201, 147, 58, 0.25) 2.5px 5px, transparent 5px) !important;
+  box-shadow: 0 0 12px rgba(201, 147, 58, 0.28);
+  transition: box-shadow 0.3s, border-color 0.3s !important;
+}
+
+.tl-entry:hover .tl-dot {
+  border-color: var(--gold-light, #e8b96a) !important;
+  background:
+    radial-gradient(circle, rgba(232, 185, 106, 1) 0 3px, rgba(201, 147, 58, 0.4) 3px 6px, transparent 6px) !important;
+  box-shadow: 0 0 20px rgba(201, 147, 58, 0.55);
+}
+
+/* Project titles get the nameplate treatment */
+.tl-title {
+  font-family: var(--serif), serif;
+}
+
+/* Artifact glow: image collages warm up on hover */
+.img-collage {
+  transition: box-shadow 0.45s ease, transform 0.45s ease;
+}
+
+.tl-entry:hover .img-collage {
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5), 0 0 34px rgba(201, 147, 58, 0.14);
+  transform: translateY(-4px);
+}
+
+/* ═══════════════════════════════════════════════
+   BUTTONS — gold-leaf sweep on hover
+   ═══════════════════════════════════════════════ */
+.btn-gradient,
+.btn-outline {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient::before,
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(240, 234, 216, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.65s ease;
+  pointer-events: none;
+}
+
+.btn-gradient:hover::before,
+.btn-outline:hover::before {
+  left: 130%;
+}
+
+/* Gold ripple micro-interaction (spawned by titanic.js) */
+.ripple-host {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(232, 185, 106, 0.35) 0%, rgba(201, 147, 58, 0.15) 40%, transparent 70%);
+  transform: scale(0);
+  animation: gold-ripple 0.7s ease-out forwards;
+}
+
+@keyframes gold-ripple {
+  to { transform: scale(1); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════
+   CONTACT — vintage boarding pass
+   ═══════════════════════════════════════════════ */
+#contact .contact-social {
+  position: relative;
+  overflow: hidden;
+  padding-top: 72px !important;
+  background: linear-gradient(180deg, rgba(201, 147, 58, 0.06) 0%, rgba(201, 147, 58, 0.02) 100%) !important;
+  border: 1px solid rgba(201, 147, 58, 0.32) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(5, 4, 3, 0.6);
+}
+
+/* Ticket header */
+#contact .contact-social::before {
+  content: 'BOARDING PASS · FIRST CLASS';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--titanic-serif);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.36em;
+  color: var(--gold);
+  text-indent: 0.36em; /* balances letter-spacing on the last char */
+}
+
+/* Perforated tear line */
+#contact .contact-social::after {
+  content: '';
+  position: absolute;
+  top: 48px;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background-image: repeating-linear-gradient(90deg, rgba(201, 147, 58, 0.5) 0 6px, transparent 6px 13px);
+}
+
+/* Boarding-pass style for the contact icon "stubs" */
+#contact .contact-icon-link {
+  border-style: solid !important;
+}
+
+#contact .contact-icon-link:hover {
+  transform: translateY(-3px) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   NAV & FOOTER — brass fittings
+   ═══════════════════════════════════════════════ */
+.navbar.scrolled {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.footer {
+  background: linear-gradient(to top, rgba(5, 4, 3, 0.8), transparent);
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .hero-bg {
+    background-size: 175% auto, 175% auto;
+    background-position: bottom right;
+    opacity: 0.65;
+  }
+
+  .about-content {
+    padding: 28px 22px;
+  }
+
+  #contact .contact-social {
+    padding-top: 64px !important;
+  }
+
+  #contact .contact-social::before {
+    font-size: 0.56rem;
+    letter-spacing: 0.26em;
+  }
+
+  #contact .contact-social::after {
+    top: 42px;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg::after,
+  .hero::after,
+  .dust {
+    animation: none !important;
+  }
+
+  .dust { opacity: 0.3; }
+
+  .gold-ripple { display: none; }
+
+  .btn-gradient::before,
+  .btn-outline::before {
+    display: none;
+  }
+}

@@ -345,6 +345,11 @@
   }
 
   .tl-line { left: 18px; }
+  [dir="rtl"] .tl-line {
+    left: auto;
+    right: 18px;
+    transform: translateX(50%);
+  }
   .tl-entry {
     grid-template-columns: 32px minmax(0, 1fr);
     grid-template-rows: auto auto;
@@ -378,6 +383,11 @@
     min-width: 0;
     max-width: 100%;
   }
+  [dir="rtl"] .tl-entry.tl-left .tl-content,
+  [dir="rtl"] .tl-entry.tl-right .tl-content {
+    padding: 0 8px 0 0;
+    text-align: right;
+  }
 
   /* Smaller collage on phones — avoids huge hero shots and keeps section scannable */
   .img-collage .img-main {
@@ -406,10 +416,21 @@
     justify-content: flex-start;
     align-self: stretch;
   }
+  [dir="rtl"] .tl-entry.tl-right .tl-content .tl-desc,
+  [dir="rtl"] .tl-entry.tl-right .tl-content .tl-tags,
+  [dir="rtl"] .tl-entry.tl-left .tl-content .tl-desc,
+  [dir="rtl"] .tl-entry.tl-left .tl-content .tl-tags {
+    text-align: right;
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 400px) {
   .tl-line { left: 14px; }
+  [dir="rtl"] .tl-line {
+    left: auto;
+    right: 14px;
+  }
   .tl-entry {
     grid-template-columns: 26px minmax(0, 1fr);
     column-gap: 8px;
