@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bashayer Alhawsawi · Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d0b08;
+      --ink-2: #14100a;
+      --gold: #c9933a;
+      --gold-light: #e8b96a;
+      --cream: #f0ead8;
+      --pale: #b8b0a4;
+      --mid: #7a7268;
+      --line: rgba(201, 147, 58, 0.28);
+      --card: rgba(255, 255, 255, 0.035);
+      --serif: 'Playfair Display', Georgia, serif;
+      --mono: 'DM Mono', 'Courier New', monospace;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--sans);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ===== Page structure (A4) ===== */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 18mm 16mm;
+      position: relative;
+      background:
+        radial-gradient(120% 80% at 100% 0%, rgba(201,147,58,0.10), transparent 55%),
+        radial-gradient(120% 80% at 0% 100%, rgba(201,147,58,0.06), transparent 55%),
+        var(--ink);
+      overflow: hidden;
+    }
+
+    @media screen {
+      body { padding: 24px 0; background: #050403; }
+      .page {
+        box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+        margin-bottom: 28px;
+        border: 1px solid rgba(201,147,58,0.15);
+      }
+    }
+
+    @page { size: A4; margin: 0; }
+
+    @media print {
+      .page { margin: 0; box-shadow: none; border: none; break-after: page; }
+      .page:last-child { break-after: auto; }
+    }
+
+    /* ===== Shared type ===== */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 30px;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .section-sub {
+      color: var(--pale);
+      font-size: 13px;
+      margin-bottom: 26px;
+      max-width: 155mm;
+    }
+    .rule {
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 0 0 26px;
+    }
+    a { color: var(--gold-light); text-decoration: none; }
+
+    /* ===== Cover ===== */
+    .cover { display: flex; flex-direction: column; justify-content: space-between; }
+    .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .brand {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .cover-date { font-family: var(--mono); font-size: 11px; color: var(--mid); }
+
+    .cover-main { margin: auto 0; }
+    .cover-hi { font-family: var(--mono); color: var(--gold); letter-spacing: 0.2em; font-size: 13px; margin-bottom: 10px; }
+    .cover-name {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 74px;
+      line-height: 0.98;
+      letter-spacing: -0.5px;
+      background: linear-gradient(120deg, var(--cream) 30%, var(--gold-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 18px;
+    }
+    .cover-role {
+      font-size: 20px;
+      color: var(--cream);
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+    .cover-role b { color: var(--gold-light); font-weight: 700; }
+    .cover-tag {
+      font-size: 15px;
+      color: var(--pale);
+      max-width: 150mm;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .cover-stats { display: flex; gap: 34px; margin-top: 6px; }
+    .stat .n { font-family: var(--serif); font-size: 34px; color: var(--gold-light); font-weight: 700; }
+    .stat .l { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--pale); margin-top: 2px; }
+
+    .cover-bottom { border-top: 1px solid var(--line); padding-top: 18px; }
+    .contact-row { display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 12.5px; }
+    .contact-row span { display: inline-flex; align-items: center; gap: 7px; color: var(--pale); }
+    .contact-row .k { color: var(--gold); font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+    .dot { color: var(--gold); }
+
+    /* ===== About / skills ===== */
+    .about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 30px; }
+    .about-body p { color: var(--pale); font-size: 13px; line-height: 1.75; margin-bottom: 12px; }
+    .about-body p b { color: var(--cream); }
+
+    .side-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .side-card h4 { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+
+    .skill { margin-bottom: 13px; }
+    .skill:last-child { margin-bottom: 0; }
+    .skill .name { font-weight: 600; font-size: 13px; color: var(--cream); margin-bottom: 3px; }
+    .skill .desc { font-size: 11px; color: var(--pale); line-height: 1.5; }
+
+    .highlight-list { list-style: none; }
+    .highlight-list li { position: relative; padding-left: 20px; font-size: 12px; color: var(--pale); line-height: 1.5; margin-bottom: 11px; }
+    .highlight-list li::before { content: "\2605"; position: absolute; left: 0; color: var(--gold); font-size: 11px; }
+    .highlight-list li b { color: var(--cream); display: block; margin-bottom: 1px; }
+
+    /* ===== Projects ===== */
+    .project {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      break-inside: avoid;
+    }
+    .project-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 4px; }
+    .project-head h3 { font-family: var(--serif); font-size: 22px; color: var(--cream); font-weight: 700; }
+    .project-index { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.15em; }
+    .project-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 10px; }
+    .project-desc { font-size: 12.5px; color: var(--pale); line-height: 1.65; margin-bottom: 10px; }
+    .project-result { font-size: 12px; color: var(--gold-light); font-weight: 500; margin-bottom: 14px; }
+
+    .shots { display: flex; gap: 10px; margin-bottom: 14px; }
+    .shots.mobile .shot { height: 150px; }
+    .shots.web .shot { height: 118px; }
+    .shot {
+      flex: 1;
+      background: #000;
+      border: 1px solid rgba(201,147,58,0.22);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .shots.web .shot img { object-fit: cover; }
+
+    .project-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+    .tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--pale);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+    .links { display: flex; gap: 8px; }
+    .btn {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+    }
+    .btn.solid { background: linear-gradient(120deg, var(--gold), var(--gold-light)); color: #1a1206; border-color: transparent; font-weight: 600; }
+    .btn svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* ===== Footer / closing ===== */
+    .closing { display: flex; flex-direction: column; justify-content: center; text-align: center; align-items: center; }
+    .closing .big { font-family: var(--serif); font-size: 40px; color: var(--cream); line-height: 1.15; margin-bottom: 18px; max-width: 150mm; }
+    .closing .big b { color: var(--gold-light); }
+    .closing .sub { color: var(--pale); font-size: 14px; margin-bottom: 34px; max-width: 130mm; line-height: 1.6; }
+    .closing-links { display: flex; flex-direction: column; gap: 12px; width: 120mm; }
+    .closing-link {
+      display: flex; justify-content: space-between; align-items: center;
+      border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px;
+      background: var(--card);
+    }
+    .closing-link .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .closing-link .v { color: var(--cream); font-size: 14px; }
+    .foot-note { margin-top: 40px; font-family: var(--mono); font-size: 10px; color: var(--mid); letter-spacing: 0.1em; }
+
+    .page-num { position: absolute; bottom: 12mm; right: 16mm; font-family: var(--mono); font-size: 9px; color: var(--mid); letter-spacing: 0.2em; }
+    .watermark { position: absolute; top: 16mm; left: 16mm; font-family: var(--mono); font-size: 9px; color: var(--mid); letter-spacing: 0.25em; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== PAGE 1 · COVER ===================== -->
+  <section class="page cover">
+    <div class="cover-top">
+      <span class="brand">AlBashayer &lt;/&gt;</span>
+      <span class="cover-date">Portfolio &middot; 2025</span>
+    </div>
+
+    <div class="cover-main">
+      <div class="cover-hi">// Hi, I'm</div>
+      <h1 class="cover-name">Bashayer<br>Alhawsawi</h1>
+      <div class="cover-role"><b>Mobile Developer</b> &nbsp;&middot;&nbsp; Android &amp; Cross-Platform</div>
+      <p class="cover-tag">I build mobile apps that people actually use &mdash; native Android with Kotlin and cross-platform with Flutter, engineered to feel effortless. Based in Saudi Arabia.</p>
+
+      <div class="cover-stats">
+        <div class="stat"><div class="n">4+</div><div class="l">Years Experience</div></div>
+        <div class="stat"><div class="n">5</div><div class="l">Shipped Projects</div></div>
+        <div class="stat"><div class="n">3</div><div class="l">Apps on Google Play</div></div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="contact-row">
+        <span><span class="k">Email</span> bashayer.eh.19@gmail.com</span>
+        <span><span class="k">WhatsApp</span> +966 54 483 0939</span>
+        <span><span class="k">LinkedIn</span> linkedin.com/in/bashayereh</span>
+        <span><span class="k">GitHub</span> github.com/BashayerH</span>
+        <span><span class="k">X</span> x.com/fo0oshaty</span>
+      </div>
+    </div>
+    <div class="page-num">01</div>
+  </section>
+
+  <!-- ===================== PAGE 2 · ABOUT + SKILLS ===================== -->
+  <section class="page">
+    <div class="watermark">Bashayer Alhawsawi</div>
+    <div class="eyebrow">01 &middot; About</div>
+    <h2 class="section-title">How I Became a Mobile Developer</h2>
+    <p class="section-sub">It started with a simple question: how does this actually work?</p>
+    <div class="rule"></div>
+
+    <div class="about-grid">
+      <div class="about-body">
+        <p>My journey began at the <b>Tuwaiq Academy bootcamp</b>, where I built my first complete application and truly understood the fundamentals of programming. That experience sparked a deep curiosity about how digital products are built.</p>
+        <p>After graduating, I worked on small projects that strengthened my skills and gave me real experience solving practical problems through code.</p>
+        <p>My first professional role introduced me to <b>Flutter</b>, where I spent a year and a half building cross-platform mobile applications and exploring a new side of mobile development.</p>
+        <p>Later, I returned to my foundation: <b>Kotlin</b>. Since then I've been continuously refining my Android expertise, improving my architecture skills, and building applications that are reliable, scalable, and designed to last.</p>
+
+        <div class="side-card" style="margin-top:18px;">
+          <h4>The Problems I Love to Solve</h4>
+          <ul class="highlight-list">
+            <li><b>Real-Time or Nothing</b>Systems where a 500ms delay costs someone a ride or a sale. Zero tolerance for lag.</li>
+            <li><b>Architecture Built to Last</b>Code that survives the next developer and the next thousand users.</li>
+            <li><b>Effortless in Complexity</b>When the problem is hard but the solution feels natural.</li>
+            <li><b>Performance Under Pressure</b>Apps that stay fast when the real world hits them.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="side-card">
+          <h4>Tools I Trust</h4>
+          <div class="skill"><div class="name">Kotlin</div><div class="desc">Coroutines, Flow, Jetpack Compose, MVVM, Room, Retrofit &mdash; native Android from architecture to animation.</div></div>
+          <div class="skill"><div class="name">Flutter</div><div class="desc">Cross-platform UI at speed. Bloc/Provider state management, custom animations, native feel on both platforms.</div></div>
+          <div class="skill"><div class="name">Clean Architecture</div><div class="desc">Domain, Data and Presentation layers. Testable, maintainable, built to survive the next developer.</div></div>
+          <div class="skill"><div class="name">Maps SDK</div><div class="desc">Live tracking, geofencing, route calculation, custom overlays &mdash; real-time location at production scale.</div></div>
+        </div>
+
+        <div class="side-card">
+          <h4>Stack &amp; Services</h4>
+          <div class="skill"><div class="desc" style="color:var(--cream)">Firebase &middot; Google Maps &middot; Jetpack Compose &middot; Room &middot; Retrofit &middot; Kotlin Multiplatform &middot; Git</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-num">02</div>
+  </section>
+
+  <!-- ===================== PAGE 3 · PROJECTS 1-2 ===================== -->
+  <section class="page">
+    <div class="watermark">Bashayer Alhawsawi</div>
+    <div class="eyebrow">02 &middot; Selected Work</div>
+    <h2 class="section-title">My Projects</h2>
+    <p class="section-sub">Projects that left an impression &mdash; and there's more.</p>
+    <div class="rule"></div>
+
+    <!-- Project 1 -->
+    <div class="project">
+      <div class="project-head"><h3>Ma'an Initiative</h3><span class="project-index">01 / Web</span></div>
+      <div class="project-cat">Web Platform &middot; Healthcare Education</div>
+      <p class="project-desc">Under the Ma'an Initiative, I built a web platform serving the healthcare education sector &mdash; a responsive, accessible site delivering educational content to its audience.</p>
+      <p class="project-result">&#9733; Live platform &middot; Healthcare education sector</p>
+      <div class="shots web">
+        <div class="shot"><img src="img/maan_5.png" alt="Ma'an Initiative screen 1"></div>
+        <div class="shot"><img src="img/maan_1.png" alt="Ma'an Initiative screen 2"></div>
+        <div class="shot"><img src="img/maan03.png" alt="Ma'an Initiative screen 3"></div>
+      </div>
+      <div class="project-foot">
+        <div class="tags">
+          <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Responsive</span>
+        </div>
+        <div class="links">
+          <a class="btn solid" href="https://maan-bfd2f.web.app">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            Visit Website
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project">
+      <div class="project-head"><h3>Minute &mdash; Driver App</h3><span class="project-index">02 / Mobile</span></div>
+      <div class="project-cat">Real-Time Ride-Hailing</div>
+      <p class="project-desc">Drivers needed real-time reliability. I built a production-grade app with Google Maps, live ride handling, and earnings tracking &mdash; performance-first, always.</p>
+      <p class="project-result">&#9733; Live on Google Play &middot; Real-time ride-hailing</p>
+      <div class="shots mobile">
+        <div class="shot"><img src="img/driver01.jpg" alt="Minute Driver screen 1"></div>
+        <div class="shot"><img src="img/driver02.png" alt="Minute Driver screen 2"></div>
+        <div class="shot"><img src="img/driver03.jpg" alt="Minute Driver screen 3"></div>
+      </div>
+      <div class="project-foot">
+        <div class="tags">
+          <span class="tag">Flutter</span><span class="tag">Kotlin</span><span class="tag">Firebase</span><span class="tag">Google Maps</span>
+        </div>
+        <div class="links">
+          <a class="btn" href="https://drive.google.com/file/d/1cHaCTntuuKOEfCkGW130yeb3p_Zv1gYy/view?usp=share_link">Demo</a>
+          <a class="btn solid" href="https://play.google.com/store/apps/details?id=com.taxi.minutedriver">
+            <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="page-num">03</div>
+  </section>
+
+  <!-- ===================== PAGE 4 · PROJECTS 3-4 ===================== -->
+  <section class="page">
+    <div class="watermark">Bashayer Alhawsawi</div>
+    <div class="eyebrow">02 &middot; Selected Work</div>
+    <h2 class="section-title">My Projects <span style="font-family:var(--mono);font-size:13px;color:var(--mid)">&mdash; continued</span></h2>
+    <div class="rule"></div>
+
+    <!-- Project 3 -->
+    <div class="project">
+      <div class="project-head"><h3>Minute &mdash; Client App</h3><span class="project-index">03 / Mobile</span></div>
+      <div class="project-cat">Production-Ready Passenger App</div>
+      <p class="project-desc">A ride-hailing app that lets users request trips, track drivers live, and reach destinations safely and quickly &mdash; with intuitive booking flows, push notifications, and a UX people trust.</p>
+      <p class="project-result">&#9733; Live on Google Play &middot; Production-ready passenger app</p>
+      <div class="shots mobile">
+        <div class="shot"><img src="img/clinet01.png" alt="Minute Client screen 1"></div>
+        <div class="shot"><img src="img/clinet02.png" alt="Minute Client screen 2"></div>
+        <div class="shot"><img src="img/clinet03.png" alt="Minute Client screen 3"></div>
+      </div>
+      <div class="project-foot">
+        <div class="tags">
+          <span class="tag">Kotlin</span><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Google Maps</span>
+        </div>
+        <div class="links">
+          <a class="btn" href="https://drive.google.com/file/d/1zgE6lEMfZeEql-GFmq3ByigTSRVs9H5-/view?usp=share_link">Demo</a>
+          <a class="btn solid" href="https://play.google.com/store/apps/details?id=com.taxi.minute">
+            <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project">
+      <div class="project-head"><h3>Minhaj App</h3><span class="project-index">04 / Mobile</span></div>
+      <div class="project-cat">Religious &amp; Educational Platform</div>
+      <p class="project-desc">An integrated digital platform for religious and educational services, developed under the Elm company as part of the National Skills Development Program.</p>
+      <p class="project-result">&#9733; Live on Google Play &middot; National Skills Development Program</p>
+      <div class="shots mobile">
+        <div class="shot"><img src="img/minhaj01.jpg" alt="Minhaj screen 1"></div>
+        <div class="shot"><img src="img/minhaj02.jpg" alt="Minhaj screen 2"></div>
+        <div class="shot"><img src="img/minhaj03.jpg" alt="Minhaj screen 3"></div>
+      </div>
+      <div class="project-foot">
+        <div class="tags">
+          <span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">Firebase</span><span class="tag">MVVM</span><span class="tag">Jetpack Compose</span>
+        </div>
+        <div class="links">
+          <a class="btn solid" href="https://play.google.com/store/apps/details?id=sa.elm.mwl&hl=ar">
+            <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="page-num">04</div>
+  </section>
+
+  <!-- ===================== PAGE 5 · PROJECT 5 + CLOSING ===================== -->
+  <section class="page closing-page">
+    <div class="watermark">Bashayer Alhawsawi</div>
+    <div class="eyebrow">02 &middot; Selected Work</div>
+    <h2 class="section-title" style="margin-bottom:18px;">My Projects <span style="font-family:var(--mono);font-size:13px;color:var(--mid)">&mdash; continued</span></h2>
+
+    <!-- Project 5 -->
+    <div class="project">
+      <div class="project-head"><h3>Meme Editor</h3><span class="project-index">05 / KMP</span></div>
+      <div class="project-cat">Kotlin Multiplatform &middot; Android &middot; iOS &middot; Web &middot; Desktop</div>
+      <p class="project-desc">A Kotlin Multiplatform app targeting Android, iOS, Web, and Desktop, letting users create and customize memes with text editing and sharing. Built to explore modern cross-platform development and ship a consistent experience from one codebase.</p>
+      <p class="project-result">&#9733; Exploration project &middot; Kotlin Multiplatform</p>
+      <div class="shots web">
+        <div class="shot"><img src="img/memeE.webp" alt="Meme Editor screen 1"></div>
+        <div class="shot"><img src="img/memeEdit.webp" alt="Meme Editor screen 2"></div>
+      </div>
+      <div class="project-foot">
+        <div class="tags">
+          <span class="tag">Kotlin Multiplatform</span><span class="tag">Compose</span><span class="tag">Android</span><span class="tag">iOS</span><span class="tag">Web</span><span class="tag">Desktop</span>
+        </div>
+        <div class="links">
+          <a class="btn solid" href="https://github.com/BashayerH">
+            <svg viewBox="0 0 24 24"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.21.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div style="text-align:center;margin-top:26px;">
+      <div class="rule" style="margin-bottom:22px;"></div>
+      <div class="eyebrow" style="text-align:center;">03 &middot; Let's Talk</div>
+      <div style="font-family:var(--serif);font-size:32px;color:var(--cream);line-height:1.2;margin-bottom:10px;">If you're building something <span style="color:var(--gold-light)">ambitious</span>, let's talk.</div>
+      <p style="color:var(--pale);font-size:13px;max-width:130mm;margin:0 auto 24px;line-height:1.6;">Available for new challenges. I take on selective work, which means what we build gets my full attention. Typically replies within 24 hours &mdash; no automated responses, you'll get me.</p>
+      <div class="closing-links" style="margin:0 auto;">
+        <div class="closing-link"><span class="k">Email</span><span class="v">bashayer.eh.19@gmail.com</span></div>
+        <div class="closing-link"><span class="k">WhatsApp</span><span class="v">+966 54 483 0939</span></div>
+        <div class="closing-link"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/bashayereh</span></div>
+        <div class="closing-link"><span class="k">GitHub</span><span class="v">github.com/BashayerH</span></div>
+      </div>
+      <div class="foot-note">&copy; 2025 Bashayer Alhawsawi &middot; Built with intention.</div>
+    </div>
+    <div class="page-num">05</div>
+  </section>
+
+</body>
+</html>
