@@ -2,19 +2,17 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "challenge": "Challenge",
-    "skills": "Skills",
     "projects": "Projects",
     "contact": "Contact"
   },
   "story": {
-    "chapterHook": "01 · The Hook",
-    "chapterOrigin": "02 · The Beginning",
-    "chapterChallenge": "03 · The Challenge",
-    "chapterCraft": "04 · The Craft",
-    "chapterProof": "05 · The Proof",
-    "chapterVision": "06 · The Vision",
-    "chapterContact": "07 · Let's Talk"
+    "chapterHook": "The Hook",
+    "chapterOrigin": "The Beginning",
+    "chapterChallenge": "The Challenge",
+    "chapterCraft": "The Craft",
+    "chapterProof": "The Proof",
+    "chapterVision": "The Vision",
+    "chapterContact": "Let's Talk"
   },
   "hero": {
     "headline": "Hi, I'm",
@@ -37,11 +35,8 @@
     "intro": "It started with a question: how does this actually work?",
     "description": [
       "My journey into development began at the Tuwaiq Academy bootcamp, where I built my first complete application and truly understood the fundamentals of programming. That experience sparked a deep curiosity about how digital products are built.",
-      
       "After graduating, I started working on small projects that strengthened my skills and gave me real experience solving practical problems through code.",
-      
       "My first professional role introduced me to Flutter, where I spent a year and a half building cross-platform mobile applications and exploring a new side of mobile development.",
-      
       "Later, I returned to my foundation: Kotlin. Since then, I’ve been continuously refining my expertise in Android development, improving my architecture skills, and building applications that are reliable, scalable, and designed to last."
     ],
     "services": {
@@ -104,28 +99,36 @@
         "description": "Under the Ma'an Initiative, I developed this website to serve the healthcare education sector",
         "result": "★ Live platform · Healthcare education sector",
         "repository": "Repository",
-        "demo": "Demo"
+        "demo": "Demo",
+        "categoryLabel": "01 / Web Application",
+        "subtitle": "Healthcare Education Platform"
       },
       {
         "title": "Minute Driver App",
         "description": "Drivers needed real-time reliability. Built a production-grade app with Google Maps, live ride handling, and earnings tracking — performance-first, always.",
         "result": "★ Live on Google Play · Real-time ride-hailing",
         "repository": "Repository",
-        "demo": "Demo"
+        "demo": "Demo",
+        "categoryLabel": "02 / Mobile Application",
+        "subtitle": "Real-Time Ride-Hailing"
       },
       {
         "title": "Minute Client App",
         "description": "Passengers needed the polish of a world-class ride app. Delivered live tracking, intuitive booking flows, push notifications — and a UX people trust.",
         "result": "★ Live on Google Play · Production-ready passenger app",
         "repository": "Repository",
-        "demo": "Demo"
+        "demo": "Demo",
+        "categoryLabel": "03 / Mobile Application",
+        "subtitle": "Passenger App · Production-Ready"
       },
       {
         "title": "Minhaj App",
         "description": "Islamic app developed under the Elm company, I helped develop it within the National Skills Development Program program",
-        "result": "★ Live on Google Play · ",
+        "result": "★ Live on Google Play · National Skills Development Program",
         "repository": "Repository",
-        "demo": "Demo"
+        "demo": "Demo",
+        "categoryLabel": "04 / Mobile Application",
+        "subtitle": "National Skills Development Program"
       },
       {
         "title": "Meme Editor",
@@ -135,8 +138,22 @@
         "result": "★ Exploration project · Kotlin Multiplatform",
         "repository": "Repository",
         "demo": "Demo"
+      },
+      {
+        "title": "Marvel World",
+        "subtitle": "What do I need to watch first?",
+        "categoryLabel": "06 / Mobile Application",
+        "description": "A new Marvel film lands and the question is always the same: what do I have to watch first so this makes sense? Answering it today means opening three fan wikis, a Reddit thread and a release-date table, then reconciling them by hand — for a franchise that now spans more than forty films and shows across several sagas and, since the Multiverse Saga, several realities. Marvel World turns that into one ordered path to the film you’re about to see, with every step labelled required, recommended or optional.",
+        "result": "★ Coming soon to Google Play & the App Store",
+        "repository": "Repository",
+        "demo": "Demo"
       }
-    ]
+    ],
+    "links": {
+      "live": "Live",
+      "play": "Play",
+      "demo": "Demo"
+    }
   },
   "vision": {
     "title": "What I'm Building Toward",
@@ -159,6 +176,6 @@
     "replyNote": "Typically replies within 24 hours. No automated responses — you'll get me."
   },
   "footer": {
-    "copyright": "© 2025 Bashayer Alhawsawi. Built with intention."
+    "copyright": "© {year} Bashayer Alhawsawi. Built with intention."
   }
 }

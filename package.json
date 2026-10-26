@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-meriem",
+  "name": "portfolio-bashayer",
   "version": "1.0.0",
   "description": "Personal portfolio website with bilingual support (EN/AR)",
   "main": "index.html",
@@ -14,6 +14,6 @@
     "i18n",
     "rtl"
   ],
-  "author": "Meriem Benfekhadou",
+  "author": "Bashayer Alhawsawi",
   "license": "MIT"
 }
