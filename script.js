@@ -1,21 +1,16 @@
 /**
- * Portfolio Website - Meriem
- * Based on info.json specification
+ * Portfolio Website - Bashayer Alhawsawi
+ * i18n, navigation, scroll reveal and cinematic touches.
  */
 
 let translations = {};
+const translationCache = {};
 const STORAGE_KEY = 'portfolio-lang';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await initI18n();
   initNavbar();
   initScrollReveal();
-  initProjectFilter();
-  // Initialize sliders after a short delay to ensure images are in DOM
-  setTimeout(() => {
-    initProjectImageSliders();
-  }, 100);
-  initContactForm();
   initSmoothScroll();
   initStoryProgress();
   initCursor();
@@ -26,16 +21,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // ===== i18n - Internationalization =====
 async function initI18n() {
-  const savedLang = localStorage.getItem(STORAGE_KEY) || 'en';
+  let savedLang = 'en';
+  try {
+    savedLang = localStorage.getItem(STORAGE_KEY) || 'en';
+  } catch (_) { /* storage blocked */ }
   await setLanguage(savedLang);
   initLanguageToggle();
 }
 
 async function loadTranslations(lang) {
+  if (translationCache[lang]) return translationCache[lang];
   try {
     const response = await fetch(`locales/${lang}.json`);
     if (!response.ok) throw new Error(`Failed to load ${lang}.json`);
-    return await response.json();
+    translationCache[lang] = await response.json();
+    return translationCache[lang];
   } catch (err) {
     console.error('Translation load error:', err);
     return lang === 'en' ? {} : await loadTranslations('en');
@@ -47,11 +47,13 @@ function getNestedValue(obj, path) {
 }
 
 function applyTranslations(t) {
+  const year = String(new Date().getFullYear());
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const value = getNestedValue(t, key);
-    if (value !== null && value !== undefined) {
-      el.textContent = value;
+    if (typeof value === 'string') {
+      el.textContent = value.replace('{year}', year);
     }
   });
 
@@ -73,23 +75,24 @@ async function setLanguage(lang) {
   document.documentElement.setAttribute('data-lang', lang);
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
+    const active = btn.dataset.lang === lang;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-pressed', String(active));
   });
 
-  localStorage.setItem(STORAGE_KEY, lang);
+  try {
+    localStorage.setItem(STORAGE_KEY, lang);
+  } catch (_) { /* storage blocked */ }
+
+  document.dispatchEvent(new CustomEvent('portfolio:language-changed'));
 }
 
 function initLanguageToggle() {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const lang = btn.dataset.lang;
-      setLanguage(lang);
+      setLanguage(btn.dataset.lang);
     });
   });
-}
-
-function t(key) {
-  return getNestedValue(translations, key) || key;
 }
 
 // ===== Story progress bar (scroll indicator) =====
@@ -113,9 +116,11 @@ function initNavbar() {
   const navItems = document.querySelectorAll('.nav-links a');
 
   if (navToggle && navLinks) {
+    navToggle.setAttribute('aria-expanded', 'false');
     navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      navToggle.classList.toggle('active');
+      const open = navLinks.classList.toggle('active');
+      navToggle.classList.toggle('active', open);
+      navToggle.setAttribute('aria-expanded', String(open));
     });
 
     // Close menu when clicking a link
@@ -123,6 +128,7 @@ function initNavbar() {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
         navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
@@ -130,11 +136,7 @@ function initNavbar() {
   // Navbar: add .scrolled class for cinematic fade-in
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+    navbar.classList.toggle('scrolled', window.scrollY > 80);
   }, { passive: true });
 }
 
@@ -150,232 +152,22 @@ function initScrollReveal() {
     }, 200 + i * 120);
   });
 
-  // Scroll reveal for other sections
-  const observerOptions = {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
-  };
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        // Re-apply slider position when project card becomes visible
-        if (entry.target.classList.contains('project-card')) {
-          const track = entry.target.querySelector('.project-images-track');
-          if (track && track._sliderGoToImage) {
-            const idx = track._sliderCurrentIndex ?? 0;
-            requestAnimationFrame(() => {
-              track._sliderGoToImage(idx);
-            });
-          }
-        }
-      }
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
     });
-  }, observerOptions);
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
 
   revealElements.forEach(el => {
     if (!el.closest('#home')) {
       observer.observe(el);
     }
   });
-}
-
-// ===== Project Filter =====
-function initProjectFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-
-      // Update active button
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // Filter projects
-      projectCards.forEach(card => {
-        const category = card.dataset.category;
-        const show =
-          filter === 'all' ||
-          (filter === 'web' && category === 'web') ||
-          (filter === 'mobile' && category === 'mobile');
-
-        card.style.display = show ? 'block' : 'none';
-        card.style.animation = show ? 'fadeIn 0.5s ease forwards' : 'none';
-      });
-    });
-  });
-}
-
-// ===== Project Image Sliders =====
-function initProjectImageSliders() {
-  const projectCards = document.querySelectorAll('.project-card');
-
-  projectCards.forEach(card => {
-    const track = card.querySelector('.project-images-track');
-    const images = card.querySelectorAll('.project-image');
-    const prevBtn = card.querySelector('.project-prev');
-    const nextBtn = card.querySelector('.project-next');
-    const dotsContainer = card.querySelector('.project-dots');
-
-    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
-    
-    // Count only images that have valid src (not broken)
-    const validImages = Array.from(images).filter(img => {
-      const imgEl = img.querySelector('img');
-      return imgEl && imgEl.src;
-    });
-    
-    if (validImages.length <= 1) {
-      // Hide navigation if only one or no images
-      prevBtn.style.display = 'none';
-      nextBtn.style.display = 'none';
-      dotsContainer.style.display = 'none';
-      return;
-    }
-
-    // Track width = n * 100% of slider; each slide = (100/n)% of track so one slide fills viewport
-    const n = images.length;
-    track.style.width = `${n * 100}%`;
-    images.forEach((imgContainer) => {
-      imgContainer.style.flex = `0 0 ${100 / n}%`;
-    });
-
-    // Add error handling and re-apply position when images load (fixes layout shift "show then go")
-    function reapplyPosition() {
-      requestAnimationFrame(() => {
-        if (track._sliderGoToImage) track._sliderGoToImage(currentIndex);
-      });
-    }
-    images.forEach((imgContainer, index) => {
-      const img = imgContainer.querySelector('img');
-      if (img) {
-        img.addEventListener('error', function() {
-          console.error(`❌ Failed to load image ${index + 1}:`, img.src);
-        });
-        img.addEventListener('load', reapplyPosition);
-      }
-    });
-
-    let currentIndex = 0;
-
-    // Create dots
-    images.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.classList.add('project-dot');
-      dot.setAttribute('aria-label', `Image ${index + 1}`);
-      if (index === 0) dot.classList.add('active');
-      dot.addEventListener('click', (e) => {
-        e.stopPropagation();
-        goToImage(index);
-      });
-      dotsContainer.appendChild(dot);
-    });
-
-    // Update dots
-    function updateDots() {
-      const dots = dotsContainer.querySelectorAll('.project-dot');
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
-      });
-    }
-
-    // Go to specific image (each slide is 100/n % of track, so move by that per slide)
-    function goToImage(index) {
-      currentIndex = Math.max(0, Math.min(index, images.length - 1));
-      track._sliderCurrentIndex = currentIndex;
-      const percentPerSlide = 100 / n;
-      const offset = -currentIndex * percentPerSlide;
-      track.style.transform = `translateX(${offset}%)`;
-      updateDots();
-    }
-
-    // Set initial position so first image shows immediately (no transition yet)
-    goToImage(0);
-    track._sliderGoToImage = goToImage;
-    requestAnimationFrame(() => {
-      track.classList.add('slider-ready');
-    });
-
-    // Re-apply position on resize so slide stays correct
-    window.addEventListener('resize', reapplyPosition);
-
-    // Event listeners
-    prevBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (currentIndex > 0) {
-        goToImage(currentIndex - 1);
-      }
-    });
-
-    nextBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (currentIndex < images.length - 1) {
-        goToImage(currentIndex + 1);
-      }
-    });
-
-    // Touch/Swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    track.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-
-    track.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    });
-
-    function handleSwipe() {
-      const swipeThreshold = 50;
-      if (touchEndX < touchStartX - swipeThreshold && currentIndex < images.length - 1) {
-        goToImage(currentIndex + 1);
-      }
-      if (touchEndX > touchStartX + swipeThreshold && currentIndex > 0) {
-        goToImage(currentIndex - 1);
-      }
-    }
-  });
-}
-
-// Old slider function (removed)
-function initProjectSlider() {
-  // This function is no longer needed
-  console.log('Project image sliders initialized');
-}
-
-// ===== Contact Form =====
-function initContactForm() {
-  const form = document.querySelector('.contact-form');
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = form.querySelector('#name').value;
-      const email = form.querySelector('#email').value;
-      const message = form.querySelector('#message').value;
-
-      // Simulate form submission (replace with actual backend)
-      console.log('Form submitted:', { name, email, message });
-
-      // Show success feedback
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = t('contact.send');
-      btn.textContent = t('contact.sent');
-      btn.style.background = 'linear-gradient(135deg, #00E5FF, #9B4DFF)';
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        form.reset();
-      }, 2000);
-    });
-  }
 }
 
 // ===== Smooth Scroll =====
@@ -385,9 +177,9 @@ function initSmoothScroll() {
       const href = this.getAttribute('href');
       if (href === '#') return;
 
-      e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
+        e.preventDefault();
         target.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
@@ -396,16 +188,6 @@ function initSmoothScroll() {
     });
   });
 }
-
-// Add fadeIn animation for filtered projects
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-`;
-document.head.appendChild(style);
 
 // ═══════════════════════════════════════════════════
 // CINEMATIC ADDITIONS — from cinematic-ux-redesign.html
@@ -423,6 +205,9 @@ function initCursor() {
     ring.style.display = 'none';
     return;
   }
+
+  // Native cursor is hidden only once the custom one is running
+  document.documentElement.classList.add('has-custom-cursor');
 
   let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 
@@ -442,7 +227,7 @@ function initCursor() {
   }
   animateRing();
 
-  document.querySelectorAll('a, button, .scene-card, .project-card, .service-card').forEach(el => {
+  document.querySelectorAll('a, button, .tl-entry, .service-card').forEach(el => {
     el.addEventListener('mouseenter', () => {
       ring.style.width = '56px';
       ring.style.height = '56px';
@@ -484,17 +269,25 @@ function initTypewriter() {
   const el = document.getElementById('typewriter-text');
   if (!el) return;
 
-  // Read typewriter array directly from the translations object (avoids t() key fallback)
   const defaultPhrases = [
     "I build apps people love to open.",
     "Kotlin · Flutter · Real-time systems.",
     "From idea to shipped — I handle both.",
     "I don't stop at 'it works.'"
   ];
-  const tw = translations && translations.hero && translations.hero.typewriter;
-  const phrases = (Array.isArray(tw) && tw.length > 0) ? tw : defaultPhrases;
 
-  let phraseIdx = 0, charIdx = 0, deleting = false;
+  // Read phrases from the active language each time, so switching language restarts in that language
+  function currentPhrases() {
+    const tw = translations && translations.hero && translations.hero.typewriter;
+    return (Array.isArray(tw) && tw.length > 0) ? tw : defaultPhrases;
+  }
+
+  let phrases = currentPhrases();
+  let phraseIdx = 0, charIdx = 0, deleting = false, timer = null;
+
+  function schedule(fn, ms) {
+    timer = setTimeout(fn, ms);
+  }
 
   function tick() {
     const current = phrases[phraseIdx];
@@ -502,24 +295,34 @@ function initTypewriter() {
       el.textContent = current.slice(0, ++charIdx);
       if (charIdx === current.length) {
         deleting = true;
-        setTimeout(tick, 1800);
+        schedule(tick, 1800);
         return;
       }
-      setTimeout(tick, 55);
+      schedule(tick, 55);
     } else {
       el.textContent = current.slice(0, --charIdx);
       if (charIdx === 0) {
         deleting = false;
         phraseIdx = (phraseIdx + 1) % phrases.length;
-        setTimeout(tick, 400);
+        schedule(tick, 400);
         return;
       }
-      setTimeout(tick, 30);
+      schedule(tick, 30);
     }
   }
 
+  document.addEventListener('portfolio:language-changed', () => {
+    clearTimeout(timer);
+    phrases = currentPhrases();
+    phraseIdx = 0;
+    charIdx = 0;
+    deleting = false;
+    el.textContent = '';
+    schedule(tick, 300);
+  });
+
   // Start after a short delay so the page feels settled
-  setTimeout(tick, 900);
+  schedule(tick, 900);
 }
 
 // ── Parallax BG Text ──
@@ -532,48 +335,4 @@ function initParallaxBgText() {
     const scrolled = window.scrollY;
     bgText.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.14}px))`;
   }, { passive: true });
-}
-
-/** Injected `#projects` from `projects-timeline.html` after fetch — translations + reveal */
-window.addEventListener('portfolio:projects-loaded', () => {
-  applyTranslations(translations);
-  initProjectsTimelineReveal();
-  queueMicrotask(() => applyTranslations(translations));
-  setTimeout(() => applyTranslations(translations), 0);
-});
-
-function initProjectsTimelineReveal() {
-  const els = [...document.querySelectorAll('#projects .reveal')];
-  if (!els.length) return;
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('in-view', 'active');
-        io.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.03, rootMargin: '20% 0px 48% 0px' }
-  );
-
-  els.forEach((el) => io.observe(el));
-
-  const markIfInOrNearViewport = () => {
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    els.forEach((el) => {
-      if (el.classList.contains('active')) return;
-      const rect = el.getBoundingClientRect();
-      if (rect.top < vh + 120 && rect.bottom > -80) {
-        el.classList.add('in-view', 'active');
-        io.unobserve(el);
-      }
-    });
-  };
-
-  requestAnimationFrame(() => {
-    markIfInOrNearViewport();
-    requestAnimationFrame(markIfInOrNearViewport);
-  });
-  setTimeout(markIfInOrNearViewport, 150);
 }

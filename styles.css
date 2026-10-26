@@ -67,8 +67,16 @@ body {
   overflow-x: hidden;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body { cursor: none; }
+/* Native cursor hidden only once script.js has the custom cursor running */
+.has-custom-cursor body,
+.has-custom-cursor a,
+.has-custom-cursor button { cursor: none; }
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* ===== Film Grain Overlay ===== */
@@ -190,6 +198,8 @@ body::before {
 .nav-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 6px;
   background: none;
   border: none;
@@ -2540,4 +2550,30 @@ a.project-tag-web:hover {
   .availability-badge::before { animation: none; }
   .star { animation: none !important; }
   .float-icon { animation: none !important; }
+}
+
+/* Hero intro is the page <h1>; keep its body-copy look */
+h1.hero-description {
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* Touch devices: tap targets at least 44px */
+@media (pointer: coarse) {
+  .nav-toggle,
+  .lang-btn,
+  .tl-tag-link,
+  .tl-tag-demo,
+  .social-icons a,
+  .contact-icon-link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .tl-tag-link,
+  .tl-tag-demo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
+  }
 }

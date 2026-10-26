@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr" data-lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Bashayer | Mobile Developer</title>
+  <title>Bashayer Alhawsawi | Mobile Developer</title>
+  <meta name="description" content="Bashayer Alhawsawi — mobile developer in Saudi Arabia building Android (Kotlin, Jetpack Compose) and cross-platform (Flutter, Kotlin Multiplatform) apps.">
+  <meta name="theme-color" content="#0d0b08">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bashayer Alhawsawi | Mobile Developer">
+  <meta property="og:description" content="Android, Flutter and Kotlin Multiplatform apps — live on Google Play.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0b08'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23c9933a' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="titanic.css">
+  <link rel="stylesheet" href="projects.css">
 </head>
 <body>
   <!-- Custom cursor (desktop only) -->
@@ -29,8 +36,6 @@
       <ul class="nav-links">
         <li><a href="#home" data-i18n="nav.home">Home</a></li>
         <li><a href="#about" data-i18n="nav.about">About</a></li>
-        <li><a href="#challenge" data-i18n="nav.challenge">Challenge</a></li>
-        <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
         <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         <li class="lang-toggle">
@@ -42,20 +47,17 @@
     </div>
   </nav>
 
-  <!-- Hero Section · 01 The Hook -->
+  <!-- Hero -->
   <section id="home" class="hero story-chapter">
     <div class="hero-bg"></div>
     <div class="stars-layer" id="hero-stars" aria-hidden="true"></div>
     <div class="bg-text" aria-hidden="true">BASHAYER</div>
-    <!-- <div class="chapter-tag reveal" data-i18n="story.chapterHook">01 · The Hook</div> -->
     <div class="container hero-container">
       <div class="hero-left reveal">
-        <!-- <h1 class="hero-headline"><span data-i18n="hero.headline">Hi, I'm</span> <span class="highlight" data-i18n="hero.highlight">Bashayer</span></h1> -->
         <p class="hero-subtitle" aria-live="polite"><span id="typewriter-text"></span><span class="typewriter-cursor" aria-hidden="true"></span></p>
-        <p class="hero-description" data-i18n="hero.description">Hi, I'm Bashayer Alhawsawi, a mobile developer based in Saudi Arabia.</p>
+        <h1 class="hero-description" data-i18n="hero.description">Hi, I'm Bashayer Alhawsawi, a mobile developer based in Saudi Arabia.</h1>
         <div class="hero-cta">
-       
-          
+
           <a href="https://drive.google.com/file/d/161jIGvsMaoHRMrWiJzOGcJSuwd04qFIq/view?usp=share_link" target="_blank" rel="noopener" class="btn btn-gradient" data-action="download_pdf" data-i18n="hero.downloadResume">Download Resume</a>
         </div>
         <div class="hero-social-row">
@@ -86,8 +88,7 @@
           </div>
         </div>
         <div class="floating-icons">
-          
-      
+
           <span class="float-icon" data-icon="html" aria-label="HTML5">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.136 3.677h15.728l-1.4 15.736L12 21.5l-6.464-2.087L4.136 3.677z" fill="#E34F26"/>
@@ -140,20 +141,19 @@
 
   <div class="chapter-divider"></div>
 
-  <!-- About Section · 02 The Origin -->
+  <!-- About -->
   <section id="about" class="about story-chapter">
     <div class="label-bar">
-      <span class="label-num">02</span>
+      <span class="label-num">01</span>
       <span class="label-title" data-i18n="story.chapterOrigin">The Origin</span>
       <span class="label-line"></span>
     </div>
     <div class="container about-container">
       <div class="about-image reveal">
-        <img src="img/me_logo.PNG" alt="Bashayer Alhawsawi" class="about-image-photo" loading="lazy">
+        <img src="img/web/me_logo.webp" alt="Bashayer Alhawsawi" class="about-image-photo" loading="lazy">
       </div>
       <div class="about-content reveal">
         <h2 class="section-title" data-i18n="about.title">How I Became a Mobile Developer</h2>
-        <!-- <p class="about-intro" data-i18n="about.intro">It started with a bootcamp that changed everything.</p> -->
         <h3 class="about-name" data-i18n="about.name">It started with a bootcamp that changed everything.</h3>
         <div class="about-paragraphs">
           <p class="about-p reveal d1" data-i18n="about.description.0">My journey into development began at the Tuwaiq Academy bootcamp, where I built my first complete application and truly understood the fundamentals of programming. That experience sparked a deep curiosity about how digital products are built.</p>
@@ -163,10 +163,6 @@
           <p class="about-p reveal d3" data-i18n="about.description.2">Later, I returned to my foundation: Kotlin. Since then, I’ve been continuously refining my expertise in Android development, improving my architecture skills, and building applications that are reliable, scalable, and designed to last.</p>
         </div>
         <div class="service-cards">
-          <!-- <div class="service-card">
-            <span class="service-icon">🌐</span>
-            <h4 data-i18n="about.services.web">Web Application Development</h4>
-          </div> -->
           <div class="service-card">
             <span class="service-icon">📱</span>
             <h4 data-i18n="about.services.mobile">Mobile Application Development</h4>
@@ -187,392 +183,276 @@
 
   <div class="chapter-divider"></div>
 
-  <!-- Challenge Section · 03 The Challenge -->
-
-  <!-- <section id="challenge" class="challenge story-chapter">
+  <!-- Projects -->
+  <section id="projects" class="projects story-chapter">
     <div class="label-bar">
-      <span class="label-num">03</span>
-      <span class="label-title" data-i18n="story.chapterChallenge">The Challenge</span>
-      <span class="label-line"></span>
-    </div>
-    <div class="container">
-      <h2 class="section-title reveal" data-i18n="challenge.title">The Problems I Love to Solve</h2>
-      <p class="challenge-intro reveal" data-i18n="challenge.intro">I'm drawn to the kind of work that keeps you up at 2am — in a good way.</p>
-      <div class="scene-grid scene-grid-2 reveal">
-        <div class="scene-card" data-num="01">
-          <h3 data-i18n="challenge.itemTitles.0">Real-Time or Nothing</h3>
-          <p data-i18n="challenge.items.0">Systems where a 500ms delay costs someone a ride, a sale, or a decision. Zero tolerance for lag.</p>
-        </div>
-        <div class="scene-card" data-num="02">
-          <h3 data-i18n="challenge.itemTitles.1">Architecture Built to Last</h3>
-          <p data-i18n="challenge.items.1">Code that survives the next developer and the next thousand users. Scalability built in, not bolted on.</p>
-        </div>
-        <div class="scene-card" data-num="03">
-          <h3 data-i18n="challenge.itemTitles.2">Effortless in Complexity</h3>
-          <p data-i18n="challenge.items.2">When the problem is hard but the solution feels natural — that's where I want to work.</p>
-        </div>
-        <div class="scene-card" data-num="04">
-          <h3 data-i18n="challenge.itemTitles.3">Performance Under Pressure</h3>
-          <p data-i18n="challenge.items.3">Apps that stay fast when the real world hits them. No shortcuts, no excuses.</p>
-        </div>
-      </div>
-    </div>
-  </section> 
--->
-
-
-  <div class="chapter-divider"></div>
-
-  <!-- Skills Section · 04 The Craft -->
-  <!-- <section id="skills" class="skills story-chapter">
-    <div class="label-bar">
-      <span class="label-num">04</span>
-      <span class="label-title" data-i18n="story.chapterCraft">The Craft</span>
-      <span class="label-line"></span>
-    </div>
-    <div class="container skills-container">
-      <h2 class="section-title reveal" data-i18n="skills.title">Tools I Trust</h2>
-      <p class="skills-intro reveal" data-i18n="skills.intro">Every tool below has been stress-tested in real projects, debugged at 2am, and refined through iteration. These aren't skills I list — they're tools I trust.</p>
-      <div class="skills-grid reveal">
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-kotlin" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h2v18H3V3zm16 0h-6v2h4v14h2V3zm-8 0H5v2h6v2H7v2h4v2H5v2h6v2H5v2h6v2h2v-2h-2v-2h2v-2h-2v-2h2V9h-2V7h2V5h-2V3z" fill="currentColor"/></svg>
-          </span>
-          <span class="skill-name">Kotlin</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-flutter" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 12L7 19.5H3L10.5 12 3 4.5h4L14.5 12zm0 0l4-4.5H22L14.5 12 22 19.5h-3.5L14.5 12z" fill="currentColor"/></svg>
-          </span>
-          <span class="skill-name">Flutter</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-js" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM10.5 17c0 .5-.2.9-.5 1.2-.3.3-.8.5-1.3.5-.6 0-1-.2-1.3-.5-.2-.2-.3-.4-.4-.7l1.2-.5c.1.2.2.3.3.4.2.2.4.2.6.2.2 0 .4-.1.5-.2.1-.2.2-.4.2-.7V9h1.5v8zm4.5-.2c-.3.3-.7.5-1.2.5-.5 0-.9-.1-1.2-.4-.3-.2-.5-.6-.6-1h1.4c0 .2.1.3.2.4.1.1.3.2.5.2.2 0 .4 0 .5-.1.1-.1.2-.3.2-.5 0-.4-.2-.7-.5-1-.3-.2-.8-.4-1.3-.4-.5 0-.9.1-1.2.4-.3.3-.5.6-.5 1h-1.4c0-.5.2-1 .5-1.3.4-.4.9-.6 1.5-.6.6 0 1.1.2 1.5.5.3.3.5.8.5 1.3 0 .4-.2.8-.5 1.1.4.2.7.5.9.8.3.3.4.7.4 1.1 0 .5-.2 1-.6 1.3z" fill="currentColor"/></svg>
-          </span>
-          <span class="skill-name">JavaScript</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-java" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.85 12.45c.55-.7 1.2-1.25 2-1.7.55-.3 1.15-.5 1.8-.6-.15.3-.25.6-.35.9-.1.35-.15.7-.2 1.05-1.2.1-2.35.45-3.4 1-.9.45-1.7 1.1-2.35 1.9-.45.55-.8 1.2-1.05 1.9-.2.5-.3 1.05-.35 1.6v.2h2.1c0-.25.05-.5.1-.75.15-.5.4-.95.75-1.35.45-.5 1-.85 1.65-1.1.65-.25 1.35-.35 2.1-.35.75 0 1.45.1 2.1.35.65.25 1.2.6 1.65 1.1.35.4.6.85.75 1.35.05.25.1.5.1.75h2.1c-.05-.55-.15-1.1-.35-1.6-.25-.7-.6-1.35-1.05-1.9-.65-.8-1.45-1.45-2.35-1.9-1.05-.55-2.2-.9-3.4-1v-.2c.05-.35.1-.7.2-1.05.1-.3.2-.6.35-.9.65.1 1.25.3 1.8.6.8.45 1.45 1 2 1.7.55.7.95 1.5 1.2 2.35.25.9.35 1.85.35 2.85 0 .05 0 .1 0 .15H12c0-.7-.05-1.35-.2-1.95-.15-.6-.4-1.15-.75-1.65-.5-.65-1.15-1.15-1.9-1.5-.4-.2-.85-.3-1.35-.4-.5-.1-1-.15-1.55-.15-.6 0-1.15.05-1.7.15-.55.1-1.05.25-1.5.45-.9.45-1.6 1.1-2.1 1.9-.25.4-.45.85-.55 1.35-.1.5-.15 1-.15 1.55 0 .05 0 .1 0 .15H4.5c0-1 .1-1.95.35-2.85.25-.85.65-1.65 1.2-2.35z" fill="currentColor"/></svg>
-          </span>
-          <span class="skill-name">Java</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-html" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 3L6 19.5 12 21l6-1.5L19.5 3H4.5zM16.5 17l-4.5.8-4.5-.8L6.5 6h11L16.5 17zM8 7l.5 4h3l-.5 3 2.5.5.5-3.5h-3L10 10h4l.5-3H8z" fill="currentColor"/></svg>
-          </span>
-          <span class="skill-name">HTML / CSS</span>
-        </div>
-        
-       
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-android" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5506 0 .9986.4486.9986.9993.0001.5511-.448.9997-.9986.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4486-.9993.9993-.9993c.5506 0 .9993.4486.9993.9993 0 .5511-.4487.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1349 1.0989L4.8428 5.4467a.4161.4161 0 00-.5676-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1862 1 13.7344 1 16.7714c0 .5506.4486.9993.9993.9993h20.0014c.5506 0 .9993-.4487.9993-.9993 0-3.037-1.6889-5.5852-4.0775-7.45" fill="currentColor"/></svg>
-          </span>
-          <span class="skill-name">Android</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-dart" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.105 4.105S9.158 1.58 11.684 1.58a2.526 2.526 0 0 1 .896.15l.962.962H3.304a.304.304 0 0 0-.304.304v17.288l.962.962a2.526 2.526 0 0 1-.15.896c-.53 1.53-2.525 7.58-2.525 7.58L0 24V4.105h4.105zm15.895 0S14.842 1.58 12.316 1.58a2.526 2.526 0 0 0-.896.15l-.962.962h10.238a.304.304 0 0 1 .304.304v17.288l-.962.962a2.526 2.526 0 0 0 .15.896c.53 1.53 2.525 7.58 2.525 7.58L24 24V4.105h-4z" fill="currentColor"/><path d="M12 12v12l8-8V4l-8 8z" fill="currentColor"/></svg>
-          </span>
-          <span class="skill-name">Dart</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-firebase" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.89 15.673L6.255.462A.542.542 0 017.27.288l2.543 4.771zm16.794 3.692l-2.25-14a.54.54 0 00-.919-.295L3.316 19.365l7.856 4.427a1.621 1.621 0 001.588 0zM14.3 7.147l-1.82-3.482a.542.542 0 00-.96 0L3.53 17.984z" fill="currentColor"/></svg>
-          </span>
-          <span class="skill-name">Firebase</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-git" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.486.658 1.238.427 1.891l2.658 2.66c.645-.223 1.387-.07 1.896.44.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996l-2.604-2.606v6.959c.176.086.342.203.488.348.713.721.713 1.883 0 2.603-.719.721-1.884.721-2.599 0-.719-.72-.719-1.882 0-2.603.182-.18.387-.316.605-.406v-7.082c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.011L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></svg>
-          </span>
-          <span class="skill-name">Git</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-icon skill-icon-github" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </span>
-          <span class="skill-name">GitHub</span>
-        </div>
-      </div> -->
-      <!-- <p class="skills-impact reveal" data-i18n="skills.impact">The result: apps that scale, interfaces users don't have to think about, and code your future self will thank you for.</p> -->
-      <!-- <div class="skills-context reveal">
-        <div class="skills-context-row">
-          <div class="skills-context-label" data-i18n="skills.context.kotlin.label">Kotlin</div>
-          <div class="skills-context-value" data-i18n="skills.context.kotlin.value">Coroutines, Flow, Jetpack Compose, MVVM, Room, Retrofit — native Android from architecture to animation.</div>
-        </div>
-        <div class="skills-context-row">
-          <div class="skills-context-label" data-i18n="skills.context.flutter.label">Flutter</div>
-          <div class="skills-context-value" data-i18n="skills.context.flutter.value">Cross-platform UI at speed. Bloc/Provider state management. Custom animations and native feel on both platforms.</div>
-        </div>
-        <div class="skills-context-row">
-          <div class="skills-context-label" data-i18n="skills.context.arch.label">Architecture</div>
-          <div class="skills-context-value" data-i18n="skills.context.arch.value">Clean Architecture — Domain, Data, and Presentation layers. Testable, maintainable, built to survive the next developer.</div>
-        </div>
-        <div class="skills-context-row">
-          <div class="skills-context-label" data-i18n="skills.context.maps.label">Maps SDK</div>
-          <div class="skills-context-value" data-i18n="skills.context.maps.value">Live tracking, geofencing, route calculation, custom overlays — real-time location at production scale.</div>
-        </div>
-      </div> -->
-    <!-- </div>
-  </section> -->
-
-
-  <div class="chapter-divider"></div>
-
-  <!-- Projects Section · 05 The Proof -->
-  <div id="projects-placeholder"></div>
-  <!-- <section id="projects" class="projects story-chapter">
-    <div class="label-bar">
-      <span class="label-num">05</span>
+      <span class="label-num">02</span>
       <span class="label-title" data-i18n="story.chapterProof">The Proof</span>
       <span class="label-line"></span>
     </div>
+  
     <div class="container">
-      <h2 class="section-title reveal" data-i18n="projects.title">What I've Built</h2>
-      <p class="projects-intro reveal" data-i18n="projects.intro">Four projects. Different domains. One constant: obsessing over the details that most people skip.</p>
-      <div class="filter-tabs reveal">
-        <button class="filter-btn active" data-filter="all" data-i18n="projects.filterAll">All</button>
-        <button class="filter-btn" data-filter="web" data-i18n="projects.filterWeb">Web Application</button>
-        <button class="filter-btn" data-filter="mobile" data-i18n="projects.filterMobile">Mobile Application</button>
-      </div>
-      <div class="projects-grid">
-        <article class="project-card reveal" data-category="web" data-project-index="0">
-          <div class="project-image-slider">
-            <div class="project-images-track">
-              <div class="project-image">
-                <img src="img/maan_5.png" alt="Ma’an Initiative - screen 1" loading="lazy">
+      <h2 class="section-title reveal" data-i18n="projects.title">My Projects</h2>
+      <p class="projects-intro reveal" data-i18n="projects.intro">
+        Projects that left an impression and pride in me .. and there's more
+      </p>
+  
+      <div class="tl-wrapper">
+        <div class="tl-line"></div>
+  
+        <!-- ── 01 · Maan Web ── Images LEFT · Text RIGHT ── -->
+        <div class="tl-entry tl-left reveal" data-category="web" data-project-index="0">
+          <div class="tl-dot"></div>
+  
+          <div class="tl-images">
+            <div class="img-collage">
+              <img src="img/web/maan_5.webp" alt="Ma'an Initiative - overview" class="img-main" loading="lazy">
+              <div class="img-secondary">
+                <img src="img/web/maan06.webp" alt="Ma'an Initiative - screen 2" loading="lazy">
+                <img src="img/web/maan_1.webp" alt="Ma'an Initiative - screen 3" loading="lazy">
+                <img src="img/web/maan02.webp" alt="Ma'an Initiative - screen 4" loading="lazy">
               </div>
-              <div class="project-image">
-                <img src="img/maan06.png" alt="Ma’an Initiative - screen 2" loading="lazy">
+            </div>
+          </div>
+  
+          <div class="tl-content">
+            <span class="tl-square"></span>
+            <span class="tl-num" data-i18n="projects.items.0.categoryLabel">01 / Web Application</span>
+            <h3 class="tl-title" data-i18n="projects.items.0.title">Maan Web</h3>
+            <p class="tl-subtitle" data-i18n="projects.items.0.subtitle">Healthcare Education Platform</p>
+            <p class="tl-desc" data-i18n="projects.items.0.description">
+              Ma'an Initiative is a web platform serving the healthcare education sectors — built with attention to accessibility, responsive flow, and seamless UX across all devices.
+            </p>
+            <p class="tl-result" data-i18n="projects.items.0.result">★ Live platform · Healthcare education sector</p>
+            <div class="tl-tags">
+              <span class="tl-tag">HTML5</span>
+              <span class="tl-tag">CSS3</span>
+              <span class="tl-tag">JavaScript</span>
+              <span class="tl-tag">Responsive</span>
+              <a href="https://maan-bfd2f.web.app" target="_blank" rel="noopener"
+                 class="tl-tag tl-tag-link" title="Visit Maan website" aria-label="Visit Maan website">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+                <span data-i18n="projects.links.live">Live</span>
+              </a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ── 02 · Minute Driver ── Text LEFT · Images RIGHT ── -->
+        <div class="tl-entry tl-right reveal" data-category="mobile" data-project-index="1">
+          <div class="tl-dot"></div>
+  
+          <div class="tl-content">
+            <span class="tl-square"></span>
+            <span class="tl-num" data-i18n="projects.items.1.categoryLabel">02 / Mobile Application</span>
+            <h3 class="tl-title" data-i18n="projects.items.1.title">Minute Driver</h3>
+            <p class="tl-subtitle" data-i18n="projects.items.1.subtitle">Real-Time Ride-Hailing</p>
+            <p class="tl-desc" data-i18n="projects.items.1.description">
+              Cross-platform driver app built with Flutter — real-time map tracking, trip management, and instant notifications designed for smooth on-road performance.
+            </p>
+            <p class="tl-result" data-i18n="projects.items.1.result">★ Live on Google Play · Real-time ride-hailing</p>
+            <div class="tl-tags">
+              <span class="tl-tag">Flutter</span>
+              <span class="tl-tag">Kotlin</span>
+              <span class="tl-tag">Firebase</span>
+              <span class="tl-tag">Google Maps</span>
+              <a href="https://drive.google.com/file/d/1cHaCTntuuKOEfCkGW130yeb3p_Zv1gYy/view?usp=share_link"
+                 target="_blank" rel="noopener" class="tl-tag tl-tag-demo" aria-label="Watch demo video" data-i18n="projects.links.demo">Demo</a>
+              <a href="https://play.google.com/store/apps/details?id=com.taxi.minutedriver&pcampaignid=web_share"
+                 target="_blank" rel="noopener" class="tl-tag tl-tag-link" title="Google Play" aria-label="Google Play">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/>
+                </svg>
+                <span data-i18n="projects.links.play">Play</span>
+              </a>
+            </div>
+          </div>
+  
+          <div class="tl-images">
+            <div class="img-collage portrait">
+              <img src="img/web/driver_logo.webp" alt="Minute Driver - logo screen" class="img-main" loading="lazy">
+              <div class="img-secondary">
+                <img src="img/web/driver01.webp" alt="Minute Driver - screen 2" loading="lazy">
+                <img src="img/web/driver02.webp" alt="Minute Driver - screen 3" loading="lazy">
+                <img src="img/web/driver03.webp" alt="Minute Driver - screen 4" loading="lazy">
               </div>
-              <div class="project-image">
-                <img src="img/maan_1.png" alt="Ma’an Initiative - screen 3" loading="lazy">
+            </div>
+          </div>
+        </div>
+  
+        <!-- ── 03 · Minute Client ── Images LEFT · Text RIGHT ── -->
+        <div class="tl-entry tl-left reveal" data-category="mobile" data-project-index="2">
+          <div class="tl-dot"></div>
+  
+          <div class="tl-images">
+            <div class="img-collage portrait">
+              <img src="img/web/clinet_logo.webp" alt="Minute Client - logo screen" class="img-main" loading="lazy">
+              <div class="img-secondary">
+                <img src="img/web/clinet01.webp" alt="Minute Client - screen 2" loading="lazy">
+                <img src="img/web/clinet02.webp" alt="Minute Client - screen 3" loading="lazy">
+                <img src="img/web/clinet03.webp" alt="Minute Client - screen 4" loading="lazy">
               </div>
-              <div class="project-image">
-                <img src="img/maan02.png" alt="Ma’an Initiative - screen 4" loading="lazy">
+            </div>
+          </div>
+  
+          <div class="tl-content">
+            <span class="tl-square"></span>
+            <span class="tl-num" data-i18n="projects.items.2.categoryLabel">03 / Mobile Application</span>
+            <h3 class="tl-title" data-i18n="projects.items.2.title">Minute Client</h3>
+            <p class="tl-subtitle" data-i18n="projects.items.2.subtitle">Passenger App · Production-Ready</p>
+            <p class="tl-desc" data-i18n="projects.items.2.description">
+              A ride-hailing app that allows users to request trips, track drivers in real time, and reach their destinations safely — polished from booking to arrival.
+            </p>
+            <p class="tl-result" data-i18n="projects.items.2.result">★ Live on Google Play · Production-ready passenger app</p>
+            <div class="tl-tags">
+              <span class="tl-tag">Kotlin</span>
+              <span class="tl-tag">Flutter</span>
+              <span class="tl-tag">Firebase</span>
+              <span class="tl-tag">Google Maps</span>
+              <a href="https://drive.google.com/file/d/1zgE6lEMfZeEql-GFmq3ByigTSRVs9H5-/view?usp=share_link"
+                 target="_blank" rel="noopener" class="tl-tag tl-tag-demo" aria-label="Watch demo video" data-i18n="projects.links.demo">Demo</a>
+              <a href="https://play.google.com/store/apps/details?id=com.taxi.minute&pcampaignid=web_share"
+                 target="_blank" rel="noopener" class="tl-tag tl-tag-link" title="Google Play" aria-label="Google Play">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/>
+                </svg>
+                <span data-i18n="projects.links.play">Play</span>
+              </a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ── 04 · Minhaj ── Text LEFT · Images RIGHT ── -->
+        <div class="tl-entry tl-right reveal" data-category="mobile" data-project-index="3">
+          <div class="tl-dot"></div>
+  
+          <div class="tl-content">
+            <span class="tl-square"></span>
+            <span class="tl-num" data-i18n="projects.items.3.categoryLabel">04 / Mobile Application</span>
+            <h3 class="tl-title" data-i18n="projects.items.3.title">Minhaj App</h3>
+            <p class="tl-subtitle" data-i18n="projects.items.3.subtitle">National Skills Development Program</p>
+            <p class="tl-desc" data-i18n="projects.items.3.description">
+              An integrated digital platform for religious and educational services — built with Kotlin and Jetpack Compose as part of the National Skills Development Program.
+            </p>
+            <p class="tl-result" data-i18n="projects.items.3.result">★ Live on Google Play · National Skills Development Program</p>
+            <div class="tl-tags">
+              <span class="tl-tag">Kotlin</span>
+              <span class="tl-tag">Android</span>
+              <span class="tl-tag">Firebase</span>
+              <span class="tl-tag">MVVM</span>
+              <span class="tl-tag">Jetpack Compose</span>
+              <a href="https://play.google.com/store/apps/details?id=sa.elm.mwl&hl=ar"
+                 target="_blank" rel="noopener" class="tl-tag tl-tag-link" title="Google Play" aria-label="Google Play">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/>
+                </svg>
+                <span data-i18n="projects.links.play">Play</span>
+              </a>
+            </div>
+          </div>
+  
+          <div class="tl-images">
+            <div class="img-collage portrait">
+              <img src="img/web/minhag_logo.webp" alt="Minhaj App - logo screen" class="img-main" loading="lazy">
+              <div class="img-secondary">
+                <img src="img/web/minhaj01.webp" alt="Minhaj App - screen 2" loading="lazy">
+                <img src="img/web/minhaj02.webp" alt="Minhaj App - screen 3" loading="lazy">
+                <img src="img/web/minhaj03.webp" alt="Minhaj App - screen 4" loading="lazy">
               </div>
-              <div class="project-image">
-                <img src="img/maan03.png" alt="Ma’an Initiative - screen 5" loading="lazy">
+            </div>
+          </div>
+        </div>
+  
+        <!-- ── 05 · Meme Editor ── Images LEFT · Text RIGHT ── -->
+        <div class="tl-entry tl-left reveal" data-category="mobile" data-project-index="4">
+          <div class="tl-dot"></div>
+  
+          <div class="tl-images">
+            <div class="img-collage portrait">
+              <img src="img/web/memeE.webp" alt="Meme Editor" class="img-main" loading="lazy">
+              <div class="img-secondary">
+                <img src="img/web/memeEdit.webp" alt="Meme Editor — editing" loading="lazy">
               </div>
-              <div class="project-image">
-                <img src="img/maan07.png" alt="Ma’an Initiative - screen 6" loading="lazy">
-              </div><div class="project-image">
-                <img src="img/maan06.png" alt="Ma’an Initiative - screen 7" loading="lazy">
-              </div>
+            </div>
+          </div>
+  
+          <div class="tl-content">
+            <span class="tl-square"></span>
+            <span class="tl-num" data-i18n="projects.items.4.categoryLabel">05 / Kotlin Multiplatform</span>
+            <h3 class="tl-title" data-i18n="projects.items.4.title">Meme Editor</h3>
+            <p class="tl-subtitle" data-i18n="projects.items.4.subtitle">Kotlin Multiplatform · Android · iOS · Web · Desktop</p>
+            <p class="tl-desc" data-i18n="projects.items.4.description">
+              Meme Editor is a Kotlin Multiplatform app targeting Android, iOS, Web, and Desktop, allowing users to create and customize memes with text editing and sharing features. Built as a hands-on project to explore modern cross-platform development and maintain consistent product building.
+            </p>
+            <p class="tl-result" data-i18n="projects.items.4.result">★ Exploration project · Kotlin Multiplatform</p>
+            <div class="tl-tags">
+              <span class="tl-tag">Kotlin</span>
+              <span class="tl-tag">KMP</span>
+              <span class="tl-tag">Android</span>
+              <span class="tl-tag">iOS</span>
+              <span class="tl-tag">Web</span>
+              <span class="tl-tag">Desktop</span>
+              <a href="https://drive.google.com/drive/folders/1uyqFV0b1ozzRnOoyjywQZGuAfE24AmjN?usp=share_link"
+                 target="_blank" rel="noopener" class="tl-tag tl-tag-demo"
+                 data-i18n="projects.items.4.demo" aria-label="Meme Editor demo videos on Google Drive">Demo</a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ── 06 · Marvel World ── Text LEFT · Images RIGHT ── -->
+        <div class="tl-entry tl-right reveal" data-category="mobile" data-project-index="5">
+          <div class="tl-dot"></div>
 
-            </div>
-            <button class="project-prev" aria-label="Previous image">‹</button>
-            <button class="project-next" aria-label="Next image">›</button>
-            <div class="project-dots"></div>
-          </div>
-          <div class="project-info">
-            <h3 data-i18n="projects.items.0.title">Maan Web</h3>
-            <p data-i18n="projects.items.0.description">Ma’an Initiative is a web platform serving the healthcare education sectors</p>
-            
-            <p class="project-result" data-i18n="projects.items.0.result">★ Live platform · Healthcare education sector</p>
-            <div class="project-features">
-              <span class="project-features-label" data-i18n="projects.featuresUsed">Features used</span>
-              <div class="project-features-tags">
-                <span class="project-tag">HTML5</span>
-                <span class="project-tag">CSS3</span>
-                <span class="project-tag">JavaScript</span>
-                <span class="project-tag">Responsive</span>
-                <a href="https://maan-bfd2f.web.app" target="_blank" rel="noopener" class="project-tag project-tag-icon project-tag-web" title="Visit Maan website" aria-label="Visit Maan website"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></a>
-              </div>
+          <div class="tl-content">
+            <span class="tl-square"></span>
+            <span class="tl-num" data-i18n="projects.items.5.categoryLabel">06 / Mobile Application</span>
+            <h3 class="tl-title" data-i18n="projects.items.5.title">Marvel World</h3>
+            <p class="tl-subtitle" data-i18n="projects.items.5.subtitle">What do I need to watch first?</p>
+            <p class="tl-desc" data-i18n="projects.items.5.description">
+              A new Marvel film lands and the question is always the same: what do I have to watch first so this makes sense? Marvel World answers it with one ordered path — every step labelled required, recommended or optional.
+            </p>
+            <p class="tl-result" data-i18n="projects.items.5.result">★ Coming soon to Google Play &amp; the App Store</p>
+            <div class="tl-tags">
+              <span class="tl-tag">Flutter</span>
+              <span class="tl-tag">Dart</span>
+              <span class="tl-tag">MVVM</span>
+              <span class="tl-tag">Supabase</span>
+              <span class="tl-tag">MCU API</span>
             </div>
           </div>
-        </article>
-        <article class="project-card reveal" data-category="mobile" data-project-index="1">
-          <div class="project-image-slider">
-            <div class="project-images-track">
-              <div class="project-image">
-                <img src="img/driver_logo.png" alt="Minute app driver - screen 1" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/driver01.jpg" alt="Minute app driver - screen 2" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/driver02.png" alt="Minute app driver - screen 3" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/driver03.jpg" alt="Minute app driver - screen 4" loading="lazy">
-              </div>
-            </div>
-            <button class="project-prev" aria-label="Previous image">‹</button>
-            <button class="project-next" aria-label="Next image">›</button>
-            <div class="project-dots"></div>
-          </div>
-          <div class="project-info">
-            <h3 data-i18n="projects.items.1.title">Minute app driver</h3>
-            <p data-i18n="projects.items.1.description">Cross-platform productivity app built with Flutter</p>
-            
-            <p class="project-result" data-i18n="projects.items.1.result">★ Live on Google Play · Real-time ride-hailing</p>
-            <div class="project-features">
-              <span class="project-features-label" data-i18n="projects.featuresUsed">Features used</span>
-              <div class="project-features-tags">
-                <span class="project-tag">Flutter</span>
-                <span class="project-tag">kotlin</span>
-                <span class="project-tag">Firebase</span>
-                <span class="project-tag">Google Map</span>
-                 <a href="https://drive.google.com/file/d/1cHaCTntuuKOEfCkGW130yeb3p_Zv1gYy/view?usp=share_link" target="_blank" rel="noopener" class="project-tag project-tag-icon project-tag-demo" title="Watch Demo Video" title="Watch Demo Video" aria-label="Watch Demo Video">demo</a>
-                 <a href="https://play.google.com/store/apps/details?id=com.taxi.minutedriver&pcampaignid=web_share" target="_blank" rel="noopener" class="project-tag project-tag-icon project-tag-play" title="Minhaj on Google Play" aria-label="Minhaj on Google Play"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/></svg></a>
 
+          <div class="tl-images">
+            <div class="img-collage">
+              <img src="img/web/marvel_hero.webp" alt="Marvel World — app overview" class="img-main" loading="lazy">
+              <div class="img-secondary">
+                <img src="img/web/marvel01.webp" alt="Marvel World — watch order screen" loading="lazy">
+                <img src="img/web/marvel02.webp" alt="Marvel World — browse screen" loading="lazy">
+                <img src="img/web/marvel03.webp" alt="Marvel World — full timeline screen" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
 
-              </div>
-            </div>
-          </div>
-        </article>
-    
-        <article class="project-card reveal" data-category="mobile" data-project-index="2">
-          <div class="project-image-slider">
-            <div class="project-images-track">
-
-              <div class="project-image">
-                <img src="img/clinet_logo.png" alt="Minute app client - screen 1" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/clinet01.png" alt="Minute app client - screen 2" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/clinet02.png" alt="Minute app client - screen 3" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/clinet03.png" alt="Minute app client - screen 4" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/clinet04.png" alt="Minute app client - screen 5" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/clinet06.png" alt="Minute app client - screen 6" loading="lazy">
-              </div>
-
-            </div>
-            <button class="project-prev" aria-label="Previous image">‹</button>
-            <button class="project-next" aria-label="Next image">›</button>
-            <div class="project-dots"></div>
-          </div>
-          <div class="project-info">
-            <h3 data-i18n="projects.items.2.title">Minute app client</h3>
-            <p data-i18n="projects.items.2.description">A ride-hailing app that allows users to request trips, track drivers, and reach destinations safely and quickly</p>
-            
-            <p class="project-result" data-i18n="projects.items.2.result">★ Live on Google Play · Production-ready passenger app</p>
-            <div class="project-features">
-              <span class="project-features-label" data-i18n="projects.featuresUsed">Features used</span>
-              <div class="project-features-tags">
-                <span class="project-tag">kotlin</span>
-                <span class="project-tag">flutter</span>
-                <span class="project-tag">Firebase</span>              
-                <span class="project-tag">Google Map</span>
-                <a href="https://drive.google.com/file/d/1zgE6lEMfZeEql-GFmq3ByigTSRVs9H5-/view?usp=share_link" target="_blank" rel="noopener" class="project-tag project-tag-demo" title="Watch Demo Video" aria-label="Watch Demo Video">demo</a>
-                 <a href="https://play.google.com/store/apps/details?id=com.taxi.minute&pcampaignid=web_share" target="_blank" rel="noopener" class="project-tag project-tag-icon project-tag-play" title="Minhaj on Google Play" aria-label="Minhaj on Google Play"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/></svg></a>
-
-              </div>
-            </div>
-          </div>
-        </article>
-         <article class="project-card reveal" data-category="mobile" data-project-index="3">
-          <div class="project-image-slider">
-            <div class="project-images-track">
-              <div class="project-image">
-                <img src="img/minhag_logo.png" alt="Minhaj app - screen 1" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/minhaj01.jpg" alt="Minhaj app - screen 2" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/minhaj02.jpg" alt="Minhaj app - screen 3" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/minhaj03.jpg" alt="Minhaj app - screen 4" loading="lazy">
-              </div>
-              <div class="project-image">
-                <img src="img/minhaj04.jpg" alt="Minhaj app - screen 5" loading="lazy">
-              </div>
-              
-            </div>
-            <button class="project-prev" aria-label="Previous image">‹</button>
-            <button class="project-next" aria-label="Next image">›</button>
-            <div class="project-dots"></div>
-          </div>
-          <div class="project-info">
-            <h3 data-i18n="projects.items.3.title">Minhaj app </h3>
-            <p data-i18n="projects.items.3.description">Minhaj is an integrated digital platform for religious and educational services, developed as part of the National Skills Development Program.</p>
-            
-            <p class="project-result" data-i18n="projects.items.3.result">★ Live on Google Play · National Skills Development Program</p>
-            <div class="project-features">
-              <span class="project-features-label" data-i18n="projects.featuresUsed">Features used</span>
-              <div class="project-features-tags">
-                <span class="project-tag">Kotlin</span>
-                <span class="project-tag">Android</span>
-                <span class="project-tag">Firebase</span>
-                <span class="project-tag">MVVM</span>
-                <span class="project-tag">Widget</span>
-                <span class="project-tag">jetpack compose</span>
-                <a href="https://play.google.com/store/apps/details?id=sa.elm.mwl&hl=ar" target="_blank" rel="noopener" class="project-tag project-tag-icon project-tag-play" title="Minhaj on Google Play" aria-label="Minhaj on Google Play"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.635z"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section> -->
+      </div><!-- /tl-wrapper -->
+    </div><!-- /container -->
+  </section>
 
   <div class="chapter-divider"></div>
 
-  <!-- Vision Section · 06 The Vision -->
-  <!-- <section id="vision" class="vision story-chapter">
-    <div class="label-bar">
-      <span class="label-num">06</span>
-      <span class="label-title" data-i18n="story.chapterVision">The Vision</span>
-      <span class="label-line"></span>
-    </div>
-    <div class="container">
-      <h2 class="section-title reveal" data-i18n="vision.title">What I'm Building Toward</h2>
-      <blockquote class="vision-quote pull-quote reveal">
-        <p data-i18n="vision.text">I'm not just looking for the next project. I'm looking to work on things that matter — apps that solve real friction, platforms that scale beyond the first thousand users, products that I'd be proud to say I built.</p>
-      </blockquote>
-    </div>
-  </section>
-
-  <div class="chapter-divider"></div> -->
-
-  <!-- Contact Section · 07 The Invitation -->
+  <!-- Contact -->
   <section id="contact" class="contact story-chapter">
     <div class="label-bar">
-      <span class="label-num">07</span>
+      <span class="label-num">03</span>
       <span class="label-title" data-i18n="story.chapterContact">The Invitation</span>
       <span class="label-line"></span>
     </div>
     <div class="container">
       <h2 class="section-title reveal" data-i18n="contact.title">Let's Build Something</h2>
-      <!-- <p class="contact-intro reveal" data-i18n="contact.intro">Whether you have a project in mind, a team looking for a mobile developer, or just want to explore possibilities — I'd love to hear from you. I take on selective work, which means what we build gets my full attention.</p> -->
       <p class="contact-cta reveal" data-i18n="contact.cta">If you're building something ambitious, let's talk.</p>
 
-      <!-- How to reach me -->
-      <!-- <div class="contact-reach reveal">
-        <h3 class="contact-subtitle" data-i18n="contact.reachMe">How to reach me</h3>
-        <div class="contact-reach-icons">
-          <a href="https://wa.me/966544830939" target="_blank" rel="noopener" class="contact-icon-link" aria-label="WhatsApp">
-            <span class="contact-icon contact-icon-whatsapp" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </span>
-            <span class="contact-icon-label">WhatsApp</span>
-          </a>
-          <a href="mailto:bashayer.eh.19@gmail.com" class="contact-icon-link" aria-label="Email">
-            <span class="contact-icon contact-icon-email" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            </span>
-            <span class="contact-icon-label" data-i18n="contact.email">Email</span>
-          </a>
-        </div>
-      </div> -->
-
-      <!-- Social media -->
       <div class="contact-social reveal">
-        
         <div class="contact-social-icons">
           <a href="https://wa.me/966544830939" target="_blank" rel="noopener" class="contact-icon-link" aria-label="WhatsApp">
             <span class="contact-icon contact-icon-whatsapp" aria-hidden="true">
@@ -586,28 +466,8 @@
             </span>
             <span class="contact-icon-label" data-i18n="contact.email">Email</span>
           </a>
-         
-         
-         
         </div>
       </div>
-
-      <!-- <form class="contact-form reveal">
-        <div class="form-group">
-          <label for="name" data-i18n="contact.name">Name</label>
-          <input type="text" id="name" name="name" required data-i18n-placeholder="contact.namePlaceholder">
-        </div>
-        <div class="form-group">
-          <label for="email" data-i18n="contact.email">Email</label>
-          <input type="email" id="email" name="email" required data-i18n-placeholder="contact.emailPlaceholder">
-        </div>
-        <div class="form-group">
-          <label for="message" data-i18n="contact.message">Message</label>
-          <textarea id="message" name="message" rows="5" required data-i18n-placeholder="contact.messagePlaceholder"></textarea>
-        </div>
-        <button type="submit" class="btn btn-gradient btn-full" data-i18n="contact.send">Send Message</button>
-      </form> -->
-      <!-- <p class="contact-reply-note reveal" data-i18n="contact.replyNote">Typically replies within 24 hours.</p> -->
     </div>
   </section>
 
@@ -620,35 +480,5 @@
 
   <script src="script.js"></script>
   <script src="titanic.js"></script>
-  <script>
-(function () {
-  function injectProjects() {
-    var ph = document.getElementById('projects-placeholder');
-    if (!ph) return;
-
-    fetch('projects-timeline.html')
-      .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.text();
-      })
-      .then(function (html) {
-        ph = document.getElementById('projects-placeholder');
-        if (!ph) return;
-        ph.outerHTML = html;
-        window.dispatchEvent(new Event('portfolio:projects-loaded'));
-      })
-      .catch(function () {
-        ph = document.getElementById('projects-placeholder');
-        if (!ph) return;
-        ph.outerHTML =
-          '<section id="projects" class="projects story-chapter"><div class="container" style="padding:3rem var(--container-padding,20px);"><p style="color:var(--pale,#b8b0a4);font-size:0.95rem;line-height:1.6;margin:0;">Projects could not be loaded (network or blocked file fetch). Serve the site over HTTP locally, for example run <code style="font-size:0.85em;">npx serve</code> from the project folder, then open the URL it prints.</p></div></section>';
-        window.dispatchEvent(new Event('portfolio:projects-loaded'));
-      });
-  }
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectProjects);
-  else injectProjects();
-})();
-</script>
 </body>
 </html>
